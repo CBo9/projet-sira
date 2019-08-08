@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="loc.css">
+	<link rel="stylesheet" type="text/css" href="/projet_sira/style/loc.css">
 	<meta charset="utf-8">
 	<title></title>
 </head>

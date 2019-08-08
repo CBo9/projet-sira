@@ -1,6 +1,6 @@
 <?php 
-require('navbar.php');
-require('post.php');
+require('../templates/navbar.php');
+require('../utility/post.php');
  if (isset($_SESSION['id'])){
  header('Location:index.php');
 } 
@@ -15,7 +15,7 @@ require('post.php');
    
    <input type="checkbox" id="keep-connect"  name="keep-connect" ><label for="keep-connect">Rester connecté</label>
   </form>
- <a href="register.php" class="lien-redirection"> Pas encore inscrit? Inscrivez-vous ici</a>
+ 
    
 
 
@@ -45,7 +45,7 @@ require('post.php');
        <br><br>
           <input type="submit" value="Envoyer" id="envoyer" name="register_request">
           <br>
-      <a  href="login.php" class="lien-redirection">Déjà inscrit? Connectez-vous ici!</a>
+    
       </fieldset>
       </form>
 <?php 

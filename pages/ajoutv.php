@@ -1,6 +1,6 @@
 <?php  
 
-require('fonctions.php')
+require('../utility/fonctions.php')
 
 ?>
 
@@ -64,7 +64,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 		// On verifie l'extention
 		if (in_array($extension_uploadee, $extension_autorisees)) {
 			
-			move_uploaded_file($_FILES['mfichier']['tmp_name'], 'img/' .basename($_FILES['mfichier']['name']));
+			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/' .basename($_FILES['mfichier']['name']));
 			$image = basename($_FILES['mfichier']['name']);
 			$db=connexion('sira');
 			$insert=$db->prepare('INSERT INTO vehicule (titre, marque, modele, description, photo, prix_journalier) VALUES(:voiture, :marque, :modele, :des, :mfichier, :prixj)');

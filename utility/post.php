@@ -1,13 +1,13 @@
 <?php 
 session_start();
-require ('fonctions.php');
+require ('../utility/fonctions.php');
 
 //CODE RELATIF A LA CONNEXION
 
 $connect=connexion('sira');
 
 $search_pseudo = isset($_POST['search_pseudo']) ? $_POST['search_pseudo'] : NULL;
-$password = isset($_POST['password1']) ? md5($_POST['password1']) : NULL;
+$password = isset($_POST['password']) ? md5($_POST['password']) : NULL;
 
 
 //DEBUT DE AVEC COOKIES
@@ -36,7 +36,7 @@ $password = isset($_POST['password1']) ? md5($_POST['password1']) : NULL;
      setcookie('prenom', htmlspecialchars($donnees['prenom']), time() + 365*24*3600, null, null, false, true); 
    }
 
-   header('Location: index.php');
+   header('Location: /projet_sira/index.php');
  }
 }
 //FIN DE AVEC COOKIES
@@ -65,7 +65,7 @@ if (isset($password)){
      setcookie('nom', $donnees['nom'], time() + 365*24*3600, null, null, false, true); 
      setcookie('prenom', htmlspecialchars($donnees['prenom']), time() + 365*24*3600, null, null, false, true); 
    }
-   header('location:index.php');
+   header('location:/projet_sira/index.php');
  }
 
 
@@ -122,7 +122,7 @@ $connect=connexion('sira');
               'civilite'=>$civilite,
               'type'=>$type
                 ]);
-        header('Location: login_register.php');
+        header('Location: ../pages/login_register.php');
       }
     } 
 //FIN DU COD RELATIF A L INSCRIPTION

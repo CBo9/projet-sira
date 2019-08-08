@@ -1,7 +1,7 @@
 <?php
 session_start();
-require('navigation.php');
-require('test.php');
+require('../templates/navbar.php');
+require('../utility/fonctions.php');
 
 ?>
 <head>

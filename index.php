@@ -1,3 +1,3 @@
 <?php
 session_start();
-require('navbar.php');?>
+require('templates/navbar.php');?>

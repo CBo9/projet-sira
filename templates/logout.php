@@ -9,5 +9,5 @@
     unset($_COOKIE['prenom']);*/
     setcookie('id');
     unset($_COOKIE['id']);
-    header ('location:index.php');
+    header ('location:../index.php');
     ?>
