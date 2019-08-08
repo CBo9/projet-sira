@@ -2,7 +2,7 @@
 require('../templates/navbar.php');
 require('../utility/post.php');
  if (isset($_SESSION['id'])){
- header('Location:index.php');
+ header('Location:/projet_sira/index.php');
 } 
 ?>
 <h1>Se connecter</h1>
