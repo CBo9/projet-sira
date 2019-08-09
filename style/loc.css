@@ -20,7 +20,7 @@ body
   font-family: "Avenir Next", "Avenir", sans-serif;
   
   overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
-  height:1000px;
+ 
 }
 
 nav{
@@ -44,8 +44,8 @@ a:hover
 {
   display: block;
   position: absolute;
-  top: 5px;
-  right: 50px;
+  top: 25px;
+  right: 25px;
   
   z-index: 1;
 
@@ -170,4 +170,20 @@ a:hover
 {
   transform: scale(1.0, 1.0);
   opacity: 1;
+}
+
+#page_ajouta table, #page_ajouta tr , #page_ajouta td 
+{
+  border: solid 2px white;
+  border-collapse: collapse;
+}
+
+.photoTab
+{
+  height:200px;
+}
+
+#page_ajouta td 
+{
+  padding:10px;
 }
