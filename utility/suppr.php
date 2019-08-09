@@ -35,3 +35,14 @@ $id=$_GET['id'];
 	
 }
 
+if(isset($_GET['id']) AND $_GET['type']=="m" )
+{
+$id=$_GET['id'];
+
+	$db=connexion('sira');
+	
+	$req=$db->prepare("DELETE FROM membres WHERE id='$id'");
+	$req->execute();
+	header('location:../pages/membre.php');
+	
+}

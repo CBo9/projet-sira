@@ -8,19 +8,55 @@ if (!isset($_SESSION['id']) OR $_SESSION['statut'] != 'admin') {
 }
   ?>
 
+<?php
+if (isset($_POST['register'])) {
 
+$db=connexion('sira');
+  $insert=$db->prepare('INSERT INTO membres (nom, prenom, civilite, pseudo, mail, statut, mdp, type ) VALUES(:nom, :prenom, :civilite, :pseudo, :mail, :statut, :mdp, :type)');
+  $insert->execute(['nom'=>$_POST['nom'],
+              'prenom' =>$_POST['prenom'],
+              'civilite'=> $_POST['civilite'],
+              'pseudo' => $_POST['pseudo'],
+              'mail'=>$_POST['mail'],
+              'statut'=>$_POST['statut'],
+              'mdp'=>md5($_POST['password']),
+              'type'=>$_POST['type']]);
+  header('location:membre.php');
+}
+  ?>
 
 
 <body>
 	<h1>Gestion des membres</h1>
 	<table>
-		<td>Id</td>
-		<td>Nom</td>
-		<td>Prénom</td>
-		<td>Pseudo</td>
-		<td>mail</td>
-		<td>Type</td>
-		<td>Statut</td>
+    <tr>
+  		<td>Id membre</td>
+  		<td>Nom</td>
+  		<td>Prénom</td>
+  		<td>Pseudo</td>
+  		<td>Email</td>
+  		<td>Type</td>
+  		<td>Statut</td>
+      <td>Modification/Suppression</td>
+    </tr>
+    <?php 
+    //DEBUT DE LA REQUETE 
+    $connect=connexion('sira');
+    $requete=$connect->prepare('SELECT * FROM membres');
+    $requete->execute();
+    while($donnees =$requete->fetch()){
+      echo "<tr>
+          <td> ". $donnees['id'] . "</td>
+          <td>" . $donnees['nom'] ."</td>
+          <td>". $donnees['prenom']."</td>
+          <td>". $donnees['pseudo']." </td>
+          <td>".$donnees['mail']." </td>
+          <td>".$donnees['type']." </td>
+          <td>".$donnees['statut']." </td>
+          <td><a href=../utility/modif.php?id=" . $donnees['id'] ."&type=m>Modifier</a>/<a href=../utility/suppr.php?id=" . $donnees['id'] ."&type=m>Supprimer</a></td>
+        </tr>";
+    }
+    ?>
 	</table>
 
 	<form action="" method="post" name="formulairead" id="formulairead">
@@ -58,21 +94,14 @@ if (!isset($_SESSION['id']) OR $_SESSION['statut'] != 'admin') {
       </form>
 </body>
 </html>
-
-
-<?php
-if (isset($_POST['register'])) {
-
-$db=connexion('sira');
-	$insert=$db->prepare('INSERT INTO membres (nom, prenom, civilite, pseudo, mail, statut, mdp, type ) VALUES(:nom, :prenom, :civilite, :pseudo, :mail, :statut, :mdp, :type)');
-	$insert->execute(['nom'=>$_POST['nom'],
-				  		'prenom' =>$_POST['prenom'],
-				  		'civilite'=> $_POST['civilite'],
-				  		'pseudo' => $_POST['pseudo'],
-				  		'mail'=>$_POST['mail'],
-				  		'statut'=>$_POST['statut'],
-				  		'mdp'=>md5($_POST['password']),
-				  		'type'=>$_POST['type']]);
-	header('location:membre.php');
+<!--SCRIPT POUR AFFIHCAGE MDP-->
+  <script type="text/javascript">
+  function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
 }
-  ?>
+  </script>
