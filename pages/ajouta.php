@@ -29,7 +29,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/agences/' .basename($_FILES['mfichier']['name']));
 			$image = basename($_FILES['mfichier']['name']);
 			$db=connexion('sira');
-			$insert=$db->prepare('INSERT INTO agences (titre, adresse, cp, ville,description, photo) VALUES(:nomAgence, :addr, :cp, :ville, :des, :photo)');
+			$insert=$db->prepare('INSERT INTO agences (titreA, adresse, cp, ville,descriptionA, photoA) VALUES(:nomAgence, :addr, :cp, :ville, :des, :photo)');
 							$insert->execute(['nomAgence'=>$_POST['nom_agence'],
 				  							  'addr' =>$_POST['adresse'],
 				  							  'cp'=> $_POST['cp'],
@@ -65,6 +65,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 			<td>Ville</td>
 			<td>Description</td>
 			<td>Photo</td>
+			<td>Modification/Suppression</td>
 		</tr>
 <?php 
 //DEBUT DE LA REQUETE 
@@ -80,6 +81,7 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['ville']."</td>
 			<td>". $donnees['descriptionA']." </td>
 			<td><img src='../img/agences/" . $donnees['photoA'] . "' class='photoTab'> </td>
+			<td><a href=../utility/modif.php?id=" . $donnees['id_agence'] ."&type=a>Modifier</a>/<a href=../utility/suppr.php?id=" . $donnees['id_agence'] ."&type=a>Supprimer</a></td>
 		</tr>";
 }
 ?>

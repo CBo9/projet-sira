@@ -194,3 +194,8 @@ textarea
   width:300px;
   resize: none;
 }
+
+td a 
+{
+  color:white;
+}
