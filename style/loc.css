@@ -172,7 +172,7 @@ a:hover
   opacity: 1;
 }
 
-#page_ajouta table, #page_ajouta tr , #page_ajouta td 
+ table,  tr ,  td 
 {
   border: solid 2px white;
   border-collapse: collapse;
@@ -186,4 +186,11 @@ a:hover
 #page_ajouta td 
 {
   padding:10px;
+}
+
+textarea
+{
+  height:300px;
+  width:300px;
+  resize: none;
 }

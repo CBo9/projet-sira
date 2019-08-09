@@ -1,7 +1,11 @@
 <?php
+$titrePage='Gestion des véhicules';
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
 //INSERTION DES NOUVELLES DONNES DANS LA BDD APRES REMPLISSAGE DU FORM
+if(!isset($_SESSION['id']) OR $_SESSION['statut']!='admin'){
+	header('location: ../index.php');
+}
 
 if (isset($_POST['envoyer'])) {
 
@@ -22,11 +26,12 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 		// On verifie l'extention
 		if (in_array($extension_uploadee, $extension_autorisees)) {
 			
-			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/' .basename($_FILES['mfichier']['name']));
+			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/voitures/' .basename($_FILES['mfichier']['name']));
 			$image = basename($_FILES['mfichier']['name']);
 			$db=connexion('sira');
-			$insert=$db->prepare('INSERT INTO vehicule (titre, marque, modele, description, photo, prix_journalier) VALUES(:voiture, :marque, :modele, :des, :mfichier, :prixj)');
-							$insert->execute(['voiture'=>$_POST['voiture'],
+			$insert=$db->prepare('INSERT INTO vehicule (id_agence, titre, marque, modele, description, photo, prix_journalier) VALUES(:agence,:voiture, :marque, :modele, :des, :mfichier, :prixj)');
+							$insert->execute(['agence'=>$_POST['agence'],
+											  'voiture'=>$_POST['voiture'],
 				  							  'marque' =>$_POST['marque'],
 				  							  'modele'=> $_POST['modele'],
 				  							  'des' => $_POST['des'],
@@ -47,13 +52,6 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="">
-	<title>Ajouter un véhicule</title>
-</head>
 <body id="page_ajouta">
 
 
@@ -63,8 +61,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 		<tr>
 			<td>Numéro de série</td>
 			<td>Photo</td>
-			<td>Marque</td>
-			<td>Modèle</td>
+			<td>Marque et modèle</td>
 			<td>Description</td>
 			<td>Prix (à la journée)</td>
 			<td>Situé à l'agence</td>
@@ -72,17 +69,16 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 <?php 
 //DEBUT DE LA REQUETE 
 $connect=connexion('sira');
-$requete=$connect->prepare('SELECT * FROM vehicule AS v ');
+$requete=$connect->prepare('SELECT * FROM vehicule AS v INNER JOIN agences AS a ON v.id_agence=a.id_agence   ');
 $requete->execute();
 while($donnees =$requete->fetch()){
 	echo "<tr>
 			<td> ". $donnees['id_vehicule'] . "</td>
-			<td><img src='../img/" . $donnees['photo'] . "' class='photoTab'></td>
-			<td>" . $donnees['marque'] ."</td>
-			<td>" . $donnees['modele'] ."</td>
-			<td>". $donnees['description']."</td>
+			<td><img src='../img/voitures/" . $donnees['photoV'] . "' class='photoTab'></td>
+			<td>" . $donnees['titreV'] ."</td>
+			<td>". $donnees['descriptionV']."</td>
 			<td>". $donnees['prix_journalier']." </td>
-			<td>".$donnees['id_agence']." </td>
+			<td>".$donnees['titreA']." </td>
 		</tr>";
 }
 ?>
@@ -94,7 +90,11 @@ while($donnees =$requete->fetch()){
 	<form method="post" action="" enctype="multipart/form-data">
 		<fieldset>
 			<label>Ajoutez votre agence</label>
-			<input type="text" name="agence">
+			<label for="agence">Thème</label>: 
+			<select name="agence" id="agence">
+						<option hidden disabled selected  value id="empty" >---</option>
+						<?php listArticle2("sira","agences","titre",""); ?>
+			</select>
 			<br><br>
 			<label>Nom de la voiture</label>
 			<input type="text" name="voiture">

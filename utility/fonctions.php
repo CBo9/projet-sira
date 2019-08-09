@@ -55,7 +55,7 @@ function listArticle2($db,$table, $v1,$v2) {
 	$query = $db -> prepare("SELECT * FROM $table");
 	$query -> execute();
 	while ($donnee = $query -> fetch()) {
-		echo '<option value="' . $donnee['id_theme'] . '">' . $donnee[$v1] . " " . $donnee[$v2] . '</option>';
+		echo '<option value="' . $donnee['id_agence'] . '">' . $donnee[$v1] . " " . $donnee[$v2] . '</option>';
 
 	}
 }

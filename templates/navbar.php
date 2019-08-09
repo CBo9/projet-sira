@@ -6,7 +6,7 @@ session_start();
 <head>
 	<link rel="stylesheet" type="text/css" href="/projet_sira/style/loc.css">
 	<meta charset="utf-8">
-	<title></title>
+	<title><?= $titrePage ?></title>
 </head>
 <body>
 	<!--    Made by Erik Terwan    -->
