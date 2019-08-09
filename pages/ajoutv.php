@@ -29,7 +29,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/voitures/' .basename($_FILES['mfichier']['name']));
 			$image = basename($_FILES['mfichier']['name']);
 			$db=connexion('sira');
-			$insert=$db->prepare('INSERT INTO vehicule (id_agence, titre, marque, modele, description, photo, prix_journalier) VALUES(:agence,:voiture, :marque, :modele, :des, :mfichier, :prixj)');
+			$insert=$db->prepare('INSERT INTO vehicule (id_agence, titreV, marque, modele, descriptionV, photoV, prix_journalier) VALUES(:agence,:voiture, :marque, :modele, :des, :mfichier, :prixj)');
 							$insert->execute(['agence'=>$_POST['agence'],
 											  'voiture'=>$_POST['voiture'],
 				  							  'marque' =>$_POST['marque'],
@@ -65,6 +65,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 			<td>Description</td>
 			<td>Prix (à la journée)</td>
 			<td>Situé à l'agence</td>
+			<td>Modification/Suppression</td>
 		</tr>
 <?php 
 //DEBUT DE LA REQUETE 
@@ -79,6 +80,7 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['descriptionV']."</td>
 			<td>". $donnees['prix_journalier']." </td>
 			<td>".$donnees['titreA']." </td>
+			<td><a href=../utility/modif.php?id=" . $donnees['id_vehicule'] ."&type=v>Modifier</a>/<a href=../utility/suppr.php?id=" . $donnees['id_vehicule'] ."&type=v>Supprimer</a>
 		</tr>";
 }
 ?>
@@ -89,11 +91,11 @@ while($donnees =$requete->fetch()){
 	<h1>Ajoutez un véhicule</h1>
 	<form method="post" action="" enctype="multipart/form-data">
 		<fieldset>
-			<label>Ajoutez votre agence</label>
-			<label for="agence">Thème</label>: 
+		
+			<label for="agence">Ajoutez votre agence</label>: 
 			<select name="agence" id="agence">
 						<option hidden disabled selected  value id="empty" >---</option>
-						<?php listArticle2("sira","agences","titre",""); ?>
+						<?php listArticle2("sira","agences","titreA",""); ?>
 			</select>
 			<br><br>
 			<label>Nom de la voiture</label>
