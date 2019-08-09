@@ -10,7 +10,7 @@ Importez le fichier sira.sql situé dans la racine du projet.<br>
  Si vous utilisez un autre WAMP que ampps, ouvrez projet-sira/utility/fonctions.php et échangez 'root' et 'mysql' ligne 19 par 
  l'identifiant et le mot de passe de votre compte PhpMyAdmin.<br>
  <br>
- Le site est près à être utilisé! <br>
+ Le site est prêt à être utilisé! <br>
 
 
 Notre code est organisé en 5 sous-dossiers:<br>
