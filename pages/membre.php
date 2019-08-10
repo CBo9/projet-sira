@@ -1,5 +1,5 @@
 <?php
-$titrepage = 'Gestion des membres';
+$titrePage = 'Gestion des membres';
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
 

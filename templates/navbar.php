@@ -9,7 +9,7 @@ session_start();
 	<title><?= $titrePage ?></title>
 </head>
 <body>
-	<!--    Made by Erik Terwan    -->
+<!--    Made by Erik Terwan    -->
 <!--   24th of November 2015   -->
 <!--        MIT License        -->
 <nav role='navigation'>
