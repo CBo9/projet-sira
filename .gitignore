@@ -1,4 +1,4 @@
 #ignore all image files
-*.png
-*.gif
-*.jpg
+/img/*/*.png
+/img/*/*.gif
+/img/*/*.jpg

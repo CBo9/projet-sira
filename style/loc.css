@@ -19,7 +19,7 @@ nav{
 a
 {
   text-decoration: none;
-  color: #232323;
+  color: white;
   
   transition: color 0.3s ease;
 }
@@ -150,6 +150,7 @@ a:hover
 {
   padding: 10px 0;
   font-size: 22px;
+  color:#232323;
 }
 
 /*
@@ -234,11 +235,12 @@ h1
   height: inherit;
   left:0;
   margin-right: 20px;
+  transition: 0.5s ease;
 }
 
-.infosSect
+.carSection:hover .photoSect
 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  height:120%;
+  z-index:20000000000;
 }
+
