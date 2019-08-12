@@ -25,9 +25,9 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 		
 		// On verifie l'extention
 		if (in_array($extension_uploadee, $extension_autorisees)) {
-			
-			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/voitures/' .basename($_FILES['mfichier']['name']));
-			$image = basename($_FILES['mfichier']['name']);
+			$date = date('m_d_Y_h_i_s', time());
+			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/voitures/'. $date.basename($_FILES['mfichier']['name']));
+			$image = $date . basename($_FILES['mfichier']['name']) ;
 			$db=connexion('sira');
 			$insert=$db->prepare('INSERT INTO vehicule (id_agence, titreV, marque, modele, descriptionV, photoV, prix_journalier) VALUES(:agence,:voiture, :marque, :modele, :des, :mfichier, :prixj)');
 							$insert->execute(['agence'=>$_POST['agence'],
