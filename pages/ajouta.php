@@ -81,7 +81,7 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['ville']."</td>
 			<td>". $donnees['descriptionA']." </td>
 			<td><img src='../img/agences/" . $donnees['photoA'] . "' class='photoTab'> </td>
-			<td><a href=../utility/modif.php?ida=" . $donnees['id_agence'] .">Modifier</a>/<a href=../utility/suppr.php?ida=" . $donnees['id_agence'] .">Supprimer</a></td>
+			<td><a href=../pages/modifa.php?ida=" . $donnees['id_agence'] .">Modifier</a>/<a href=../utility/suppr.php?ida=" . $donnees['id_agence'] .">Supprimer</a></td>
 		</tr>";
 }
 ?>

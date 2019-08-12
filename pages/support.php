@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
 

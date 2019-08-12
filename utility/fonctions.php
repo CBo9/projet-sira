@@ -118,7 +118,15 @@ $list=["Premier" ];
 
 
 
+function listArticle3($db,$table, $v1,$v2) {
+	$db = connexion($db);
+	$query = $db -> prepare('SELECT * FROM vehicule AS v INNER JOIN agences AS a ON v.id_agence=a.id_agence');
+	$query -> execute();
+	while ($donnee = $query -> fetch()) {
+		echo '<option value="' . $donnee['id_vehicule'] . '">' . $donnee[$v1] . " " . $donnee[$v2] . '</option>';
 
+	}
+}
 
 ?>
 
