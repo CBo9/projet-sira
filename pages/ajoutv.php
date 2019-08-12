@@ -80,7 +80,7 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['descriptionV']."</td>
 			<td>". $donnees['prix_journalier']." </td>
 			<td>".$donnees['titreA']." </td>
-			<td><a href=../utility/modif.php?id=" . $donnees['id_vehicule'] ."&type=v>Modifier</a>/<a href=../utility/suppr.php?id=" . $donnees['id_vehicule'] ."&type=v>Supprimer</a>
+			<td><a href=../utility/modif.php?idv=" . $donnees['id_vehicule'] .">Modifier</a>/<a href=../utility/suppr.php?idv=" . $donnees['id_vehicule'] .">Supprimer</a>
 		</tr>";
 }
 ?>

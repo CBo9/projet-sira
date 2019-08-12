@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 require ('../utility/fonctions.php');
 
 //CODE RELATIF A LA CONNEXION

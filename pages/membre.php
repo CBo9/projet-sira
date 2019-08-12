@@ -53,7 +53,7 @@ $db=connexion('sira');
           <td>".$donnees['mail']." </td>
           <td>".$donnees['type']." </td>
           <td>".$donnees['statut']." </td>
-          <td><a href=../utility/modif.php?id=" . $donnees['id'] ."&type=m>Modifier</a>/<a href=../utility/suppr.php?id=" . $donnees['id'] ."&type=m>Supprimer</a></td>
+          <td><a href=../utility/modif.php?idm=" . $donnees['id'] .">Modifier</a>/<a href=../utility/suppr.php?idm=" . $donnees['id'] .">Supprimer</a></td>
         </tr>";
     }
     ?>

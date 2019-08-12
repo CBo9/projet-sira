@@ -1,9 +1,9 @@
 <?php
 require('fonctions.php');
 echo $_GET['id'];
-if(isset($_GET['id']) AND $_GET['type']=="v" )
+if(isset($_GET['idv']))
 {
-$id=$_GET['id'];
+$id=$_GET['idv'];
 
 	$db=connexion('sira');
 	$rq=$db->prepare("SELECT * FROM vehicule WHERE id_vehicule='$id'");
@@ -18,9 +18,9 @@ $id=$_GET['id'];
 	
 }
 
-if(isset($_GET['id']) AND $_GET['type']=="a" )
+if(isset($_GET['ida']))
 {
-$id=$_GET['id'];
+$id=$_GET['ida'];
 
 	$db=connexion('sira');
 	$rq=$db->prepare("SELECT * FROM agences WHERE id_agence='$id'");
@@ -35,9 +35,9 @@ $id=$_GET['id'];
 	
 }
 
-if(isset($_GET['id']) AND $_GET['type']=="m" )
+if(isset($_GET['idm']))
 {
-$id=$_GET['id'];
+$id=$_GET['idm'];
 
 	$db=connexion('sira');
 	
