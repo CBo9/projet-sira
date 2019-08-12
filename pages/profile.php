@@ -30,8 +30,8 @@ require('../utility/fonctions.php'); ?>
     
 					
 <?php
-$date = date('m/d/Y h:i:s', time());
-echo $date;
+
+
 					$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
 	                $prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
 	                $mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;

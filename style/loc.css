@@ -213,3 +213,32 @@ h1
 {
   cursor:pointer;
 }
+
+.carSection
+{
+  height:200px;
+  display: flex;
+  margin:20px 20px;
+  color:white;
+  transition: 0.5s ease;
+}
+
+.carSection:hover
+{
+  background-color: white;
+  color:black;
+}
+
+.photoSect
+{
+  height: inherit;
+  left:0;
+  margin-right: 20px;
+}
+
+.infosSect
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
