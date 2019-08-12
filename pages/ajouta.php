@@ -110,12 +110,12 @@ while($donnees =$requete->fetch()){
 			<br><br>
 			<label>Ajoutez une photo</label>
 			<br><br>
-			<input type="file" name="mfichier">
-		
+			<img id="blah" src="#" alt="Prévisualisation" />
+			<input type="file" name="mfichier" id="imgInp" >
 			<br><br>
 			<input type="submit" name="envoyer">
 		</fieldset>
 	</form>
 </body>
 </html>
-
+<?php include '../utility/picPreview.js';?>
