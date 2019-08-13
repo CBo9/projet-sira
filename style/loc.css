@@ -293,7 +293,7 @@ h1
   padding-top:40px;
 }
 
-#updateToggle{
+#slideDown{
   display:none;
 }
 
@@ -327,4 +327,19 @@ h1
 
 .carSection:hover .photoSect
 {
+  height:120%;
+  z-index:10;
+}
 
+#blah
+{
+  height:200px;
+}
+
+#pageSP
+{
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  margin:20px;
+}

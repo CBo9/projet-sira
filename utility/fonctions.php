@@ -128,6 +128,17 @@ function listArticle3($db,$table, $v1,$v2) {
 	}
 }
 
+function compteurTable($db,$table) {
+	$compteur=0;
+	$db = connexion($db);
+	$query = $db -> prepare("SELECT * FROM $table");
+	$query -> execute();
+	while ($donnee = $query -> fetch()) {
+		$compteur++;
+
+	}
+	return $compteur;
+}
 ?>
 
 
