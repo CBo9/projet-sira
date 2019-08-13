@@ -5,7 +5,30 @@ require('../utility/fonctions.php'); ?>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <h1>Bienvenue <?= $_SESSION['prenom']?></h1>
 
+<?php  
+if ($_SESSION['statut']== 'admin') {
 
+		echo '<fieldset><a href=""> Gestion des membres</a><br>';
+		echo '<a href="ajoutv.php"> Gestion des voiture</a><br>';
+		echo '<a href="ajouta.php"> Gestion des agences</a></fieldset>';
+	
+
+}
+?>
+<div class="info" id="infojoueur">
+  		<ul class="list-joueur">
+  			<ol>
+  				<?php 
+  			echo "<br>";
+	  		echo "<li><u>Login:</u> ".$_SESSION["pseudo"]."</li><br>";
+	        echo "<li><u>Nom:</u> ".$_SESSION["nom"]."</li><br>";
+	        echo"<li><u>Prénom:</u> ".$_SESSION["prenom"]."</li><br>";
+	        echo"<li><u>Statut:</u> ".$_SESSION["statut"]."</li><br>";
+	         
+	         ?>
+  			</ol>
+  		</ul>
+  	</div>
 
 <form action="" method="post" name="formulaire" id="formulaire">
 			<legend id="toggleUpdate">Modifier mes informations</legend>

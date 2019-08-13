@@ -5,6 +5,22 @@ require('utility/fonctions.php');?>
 
 <h1>Bienvenue sur Localoc</h1>
 
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+<div id="cssSlider">
+  <div id="sliderImages">
+    <h3>Localoc</h3>
+    <img id="si_1" src="imgcarr/voiture1.jpg" alt="" />
+    <img id="si_2" src="imgcarr/voiture2.jpg" alt="" />
+    <img id="si_3" src="imgcarr/voiture3.jpg" alt="" />
+    <img id="si_4" src="imgcarr/voiture4.jpg" alt="" />
+    <img id="si_5" src="imgcarr/voiture1.jpg" alt="" />
+    <div style="clear:left;"></div>
+  </div>
+</div>
+
 <?php 
 $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
 
