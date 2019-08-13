@@ -11,7 +11,6 @@ require('utility/fonctions.php');?>
 
 <div id="cssSlider">
   <div id="sliderImages">
-    <h3>Localoc</h3>
     <img id="si_1" src="imgcarr/voiture1.jpg" alt="" />
     <img id="si_2" src="imgcarr/voiture2.jpg" alt="" />
     <img id="si_3" src="imgcarr/voiture3.jpg" alt="" />
