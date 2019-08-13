@@ -32,7 +32,7 @@ if ($_SESSION['statut']== 'admin') {
 
 <form action="" method="post" name="formulaire" id="formulaire">
 			<legend id="toggleUpdate">Modifier mes informations</legend>
-			<fieldset id="updateToggle">
+			<fieldset id="slideDown">
 					 <label for="civilite">Civilité</label>: <select name="civil" id="civilite" >
 					      <option hidden disabled selected  value id="empty" >---</option>
 					      <option value="Mr">Mr</option>
@@ -130,7 +130,7 @@ if ($_SESSION['statut']== 'admin') {
 <script>
 $(function() {
     $("legend").click(function() {
-        $("fieldset").slideToggle(750);
+        $("#slideDown").slideToggle(750);
     });
 });
 </script>

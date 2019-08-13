@@ -8,7 +8,7 @@ require('utility/fonctions.php');?>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-
+<?php if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
 <div id="cssSlider">
   <div id="sliderImages">
     <h3>Localoc</h3>
@@ -20,11 +20,15 @@ require('utility/fonctions.php');?>
     <div style="clear:left;"></div>
   </div>
 </div>
+<?php endif; ?>
+
 
 <?php 
 $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
+$pageP=isset($_GET['page']) ? $_GET['page'] -1 : 0;
+$nb_pages=floor((compteurTable('sira','vehicule')/5));
 
-if (!isset($_GET['page'])) {
+if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
 $db = connexion('sira');
 
@@ -34,8 +38,12 @@ while($donnees = $req->fetch()){
 	echo '<a href="pages/voiture.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
 	<img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . '€/mois</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
 }
+echo '<div id="pageSP"><a href="index.php?page=' . $pageS . '">Page suivante</a></div>';
 
-}else{
+}
+
+
+else if($_GET['page']<=$nb_pages){
 
 $db = connexion('sira');
 $skip=5*$_GET['page'];
@@ -46,8 +54,12 @@ while($donnees = $req->fetch()){
 	echo '<a href="pages/voiture.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
 	<img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . '€/mois</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
 }
-
+echo '<div id="pageSP"><a href="index.php?page=' . $pageP . '">Page précédente</a>';
+if($_GET['page']!=$nb_pages){
+	echo '<a href="index.php?page=' . $pageS . '">Page suivante</a>';
+}
+echo '</div>';
 }
 
-echo '<a href="index.php?page=' . $pageS . '">Page suivante</a>';
+
 ?>
