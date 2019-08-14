@@ -110,6 +110,7 @@ if (isset($_POST['register_request'])){
     </script>';
   }else{
 
+// INSERTION DE L'INSCRIPTION
     $connect=connexion('sira');
     $insertion=$connect->prepare('INSERT INTO membres ( nom, prenom, mail, pseudo, mdp, civilite, type )
       VALUES (:nom,:prenom,:mail,:pseudo,:password,:civilite,:type) ' );

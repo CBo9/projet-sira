@@ -120,7 +120,7 @@ while($donnees =$requete->fetch()){
 			<label for="agence">Ajoutez votre agence</label>: 
 			<select name="agence" id="agence">
 						<option hidden disabled selected  value id="empty" >---</option>
-						<?php listArticle2("sira","agences","titreA",""); ?>
+						<?php listArticle("sira","agences","titreA"); ?>
 			</select>
 			<br><br>
 			<label>Nom de la voiture</label>

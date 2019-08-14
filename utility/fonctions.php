@@ -16,7 +16,7 @@ function tri(&$tab){
 function requete($search,$bdData,$dbname,$table){
 	try
 	{
-		$connexion = new PDO("mysql:host=localhost;dbname=$dbname;charset=utf8",'root','mysql');
+		$connexion = new PDO("mysql:host=localhost;dbname=$dbname;charset=utf8",'root','');
 		array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
 	}
 	catch(Exception $e)
@@ -36,11 +36,12 @@ function requete($search,$bdData,$dbname,$table){
 	
 }
 
+// FONCTION DE CONNEXION A LA BASE DE DONNEE
 function connexion($dbname)
 {
 	try
 	{
-		$connexion = new PDO("mysql:host=localhost;dbname=$dbname;charset=utf8",'root','mysql');
+		$connexion = new PDO("mysql:host=localhost;dbname=$dbname;charset=utf8",'root','');
 		array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
 		return $connexion;
 	}
@@ -50,12 +51,23 @@ function connexion($dbname)
 	}
 }
 
+// FONCTION UTILISER DANS PLUSIEURS SELECT
 function listArticle2($db,$table, $v1,$v2) {
 	$db = connexion($db);
 	$query = $db -> prepare("SELECT * FROM $table");
 	$query -> execute();
 	while ($donnee = $query -> fetch()) {
 		echo '<option value="' . $donnee['id_agence'] . '">' . $donnee[$v1] . " " . $donnee[$v2] . '</option>';
+
+	}
+}
+
+function listArticle($db,$table, $v1) {
+	$db = connexion($db);
+	$query = $db -> prepare("SELECT * FROM $table");
+	$query -> execute();
+	while ($donnee = $query -> fetch()) {
+		echo '<option value="' . $donnee['id_agence'] . '">' . $donnee[$v1] . '</option>';
 
 	}
 }
@@ -68,7 +80,7 @@ function postVar($var){
 function requeteConnexion($col1,$var1,$col2,$var2){
 	try
 			{
-				$connexion = new PDO("mysql:host=localhost;dbname=profiles;charset=utf8",'root','mysql');
+				$connexion = new PDO("mysql:host=localhost;dbname=profiles;charset=utf8",'root','');
 				array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
 			}
 			catch(Exception $e)

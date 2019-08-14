@@ -8,11 +8,23 @@ require('../utility/fonctions.php'); ?>
 
 <h1>Bienvenue <?= $_SESSION['prenom']?></h1>
 
+<!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
+<?php  
+if ($_SESSION['statut']== 'admin') {
+
+		echo '<fieldset class="administration"><a href="membre.php"> Gestion des membres</a><br>';
+		echo '<a href="ajoutv.php"> Gestion des voiture</a><br>';
+		echo '<a href="ajouta.php"> Gestion des agences</a></fieldset>';
+
+}
+?>
+<!-- FIN DE L'AFFICHAGE ADMINISTRATEUR -->
+
+
+<!-- AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
+
 <div class="info" id="infojoueur">
   		<ul class="list-joueur">
-  			<ol>
-
-  			<!-- AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
   			<?php 
   			echo "<br>";
 	  		echo "<li><u>Login:</u> ".$_SESSION["pseudo"]."</li><br>";
@@ -20,30 +32,10 @@ require('../utility/fonctions.php'); ?>
 	        echo"<li><u>Prénom:</u> ".$_SESSION["prenom"]."</li><br>";
 	        echo"<li><u>Statut:</u> ".$_SESSION["statut"]."</li><br>";
 	        ?>
-	        <!-- FIN DE L'AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
-
-
-  			</ol>
-  		</ul>
-  	</div>
-
-<!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
-<?php  
-if ($_SESSION['statut']== 'admin') {
-
-		echo '<fieldset><a href=""> Gestion des membres</a><br>';
-		echo '<a href="ajoutv.php"> Gestion des voiture</a><br>';
-		echo '<a href="ajouta.php"> Gestion des agences</a></fieldset>';
-	
-
-}
-?>
-<!-- FIN DE L'AFFICHAGE ADMINISTRATEUR -->
-
-<!-- FORMULAIRE DE MODIFICATION DES DONNEES UTILISATEUR -->
-<form action="" method="post" name="formulaire" id="formulaire">
+<!-- FIN DE L'AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
+	<form action="" method="post" name="formulaire" id="formprof">
 			<legend id="toggleUpdate">Modifier mes informations</legend>
-			<fieldset id="slideDown">
+			<div id="slideDown">
 					<label for="civilite">Civilité</label>: 
 					<select name="civil" id="civilite" >
 					   <option hidden disabled selected  value id="empty" >---</option>
@@ -117,8 +109,50 @@ if (isset($password) AND $password==$_SESSION['password']){
 			?>
 
 					<input type="submit" value="Modifier " id="modifier">
-			</fieldset>
-</form>
+			</div>
+		</form>
+	</ul>
+</div>
+
+<!--  DEBUT DE L'AFFICHAGE DU TABLEAU DES VEHICULES DE LA BDD-->
+
+	
+	<table class="order">
+	<h1>Mes commandes</h1>
+		<tr>
+			<td>Numéro de commande</td>
+			<td>véhicule</td>
+			<td>Agence</td>
+			<td>Début de location</td>
+			<td>Fin de location</td>
+			<td>Supprimer la commande</td>
+		</tr>
+<!-- FIN DE L'AFFICHAGE DES VEHICULE -->
+
+
+<!-- DEBUT DE L'AFFICHAGE DES COMMANDES -->
+<?php
+$idm = $_SESSION['id'];
+$connect=connexion('sira');
+$requete=$connect->prepare("SELECT * FROM commande  AS c INNER JOIN agences AS a ON c.id_agence=a.id_agence INNER JOIN vehicule AS v on c.id_vehicule = v.id_vehicule WHERE id_membre = '$idm'");
+$requete->execute();
+while($donnees =$requete->fetch()){
+	echo "<tr>
+			<td> ". $donnees['id_commande'] . "</td>
+			<td><img src='../img/voitures/" . $donnees['photoV'] . "' class='photoTab'>" . $donnees['titreV'] ."</td>
+			<td>". $donnees['titreA']."</td>
+			<td>". $donnees['date_depart']." </td>
+			<td>".$donnees['date_fin']." </td>
+			<td><a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Supprimer</a>
+		</tr>";
+}
+// FIN DE L'AFFICHAGE DU TABLEAU
+
+
+
+  ?>
+</table>
+
 
 
 <script>

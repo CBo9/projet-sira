@@ -5,8 +5,10 @@ require('utility/fonctions.php');?>
 
 <h1>Bienvenue sur Localoc</h1>
 
-
+<!-- LE SLIDER NE S'AFFICHE QUE SUR LA PAGE D'ACCUEIL -->
 <?php if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
+
+<!-- SLIDER DE LA PAGE D'ACCUEIL -->
 <div id="cssSlider">
   <div id="sliderImages">
     <img id="si_1" src="imgcarr/voiture1.jpg" alt="" />
@@ -17,14 +19,20 @@ require('utility/fonctions.php');?>
     <div style="clear:left;"></div>
   </div>
 </div>
+<!-- FIN DE SLIDER -->
+
 <?php endif; ?>
+<!-- FIN DE LA CONDITION POUR L'AFFICHAGE DU SLIDER SUELEMENT SUR LA PAGE D'ACCUEIL -->
 
 
 <?php 
+// VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
 $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
 $pageP=isset($_GET['page']) ? $_GET['page'] -1 : 0;
 $nb_pages=floor((compteurTable('sira','vehicule')/5));
+// FIN DES VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
 
+// CONDITION POUR L'AFFICHAGE DE 5 VEHICULE SUR LA PAGE
 if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
 $db = connexion('sira');
@@ -58,5 +66,5 @@ if($_GET['page']!=$nb_pages){
 echo '</div>';
 }
 
-
+// FIN DE LA REQUETE D'AFFICHAGE
 ?>

@@ -1,6 +1,8 @@
+
 /*CODE CSS APPLIQUER AU BODY*/
 body
 {
+ 
   margin: 0;
   padding: 0;
   background: #232323;
@@ -29,6 +31,9 @@ a:hover
 
 
 /*CSS DE L'AFFICHAGE DE L'INFORMATION DU MEMBRE*/
+
+
+
 div#infojoueur{
 
   border: solid;
@@ -36,6 +41,9 @@ div#infojoueur{
   margin-bottom: 10px;
   width: 230px;
   border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  float: right;
 }
 /*FIN DES INFORMATION DU MEMBRE*/
 
@@ -48,7 +56,7 @@ div#infojoueur{
   overflow: hidden;
   margin: 0px auto;
   border-top: 5px solid black;
-  border-bottom:  5px solid black0.;
+  border-bottom:  5px solid black.;
 }
 
 /*TAILLE TOTALE DU SLIDER*/
@@ -266,7 +274,7 @@ div#infojoueur{
   padding:10px;
 }
 
-/*CSS DE L4INPUT DES MESSAGES*/
+/*CSS DE L'INPUT DES MESSAGES*/
 textarea
 {
   height:300px;
@@ -304,8 +312,10 @@ h1
   cursor:pointer;
 }
 
+/*CSS DE L'AFFICHAGE DES VEHICULE DE LA PAGE D'ACCUEIL*/
 .carSection
 {
+  
   height:200px;
   display: flex;
   margin:20px 20px;
@@ -313,6 +323,7 @@ h1
   transition: 0.5s ease;
 }
 
+/*HOVER DE LA SECTION AFFICHAGE DES VOITURES*/
 .carSection:hover
 {
   background-color: white;
@@ -338,6 +349,7 @@ h1
   height:200px;
 }
 
+/*CSS 'page suivante' ET 'page précèdente'*/
 #pageSP
 {
   text-align: center;
@@ -378,3 +390,6 @@ h1
 {
   float:left;
 }
+
+
+

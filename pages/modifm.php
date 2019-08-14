@@ -57,13 +57,13 @@ while($donnees = $req->fetch()){
 			<br><br>
 			<label for="type">Changement de type</label>: 
 			<select name="type" id="type">
-            	<option hidden disabled selected  value id="empty" ><?=$statut?></option>
+            	<option hidden disabled selected  value id="empty" ><?=$type?></option>
             	<option value="pro">Professionnel</option>
             	<option value="particulier">Particulier</option>
           	</select><br><br>
           	<label for="statut">Changement de statut</label>: 
           	<select name="statut" id="statut">
-            	<option hidden disabled selected  value id="empty" ><?=$type?></option>
+            	<option hidden disabled selected  value id="empty" ><?=$statut?></option>
             	<option value="admin">Administrateur</option>
             	<option value="client">Client</option>
           	</select><br><br>

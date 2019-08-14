@@ -1,7 +1,6 @@
 <?php
 
-
-	
+// AFFICHAGE DE LA BARRE DE NAVIGATION POUR LES VISITEUR DU SITE
 if (!isset($_SESSION['id'])) {
 echo'
 			<a href="/projet_sira/index.php"><li>Accueil</li></a>
@@ -10,6 +9,9 @@ echo'
 		
 		';
 }
+// FIN AFFICHAGE DE LA BARRE DE NAVIGATION POUR LES VISITEUR DU SITE
+
+// AFFICHAGE D'UN MENU SPECIFIQUE SI L'UTILISATEUR A LE STATUT DE 'admin'
 else if($_SESSION['statut']=="admin"){
 echo ' 
 			
@@ -34,6 +36,9 @@ echo '
 			</script>
 		';
 	}
+// FIN AFFICHAGE D'UN MENU SPECIFIQUE SI L'UTILISATEUR A LE STATUT DE 'admin'
+	
+	// AFFICHAGE DU MENU POUR LES UTILISATEUR MEMBRE DU SITE
 	else if($_SESSION['statut']!="admin"){
 echo 		
 			'
@@ -58,5 +63,5 @@ echo
 			</script>
 		';
 	}
-	
+	// FIN AFFICHAGE DU MENU POUR LES UTILISATEUR MEMBRE DU SITE
 ?>
