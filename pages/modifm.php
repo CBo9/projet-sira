@@ -31,7 +31,7 @@ while($donnees = $req->fetch()){
 
 <body>
 	<h2>Administateur : <?= $_SESSION['prenom']?></h2>
-	<h1>Modifiez les informations</h1>
+	<h1>Modifiez les informations de <?=$prenom;?> </h1>
 	<form method="post" >
 		<fieldset>
           <label for="civilite">Civilité</label>: <select name="civilite" id="civilite">
