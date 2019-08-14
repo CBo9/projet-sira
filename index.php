@@ -29,10 +29,10 @@ if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
 $db = connexion('sira');
 
-$req=$db->prepare('SELECT * FROM vehicule LIMIT 5');
+$req=$db->prepare('SELECT * FROM vehicule ORDER BY prix_journalier ASC LIMIT 5 ');
 $req->execute();
 while($donnees = $req->fetch()){
-	echo '<a href="pages/voiture.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
+	echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
 	<img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . '€/mois</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
 }
 echo '<div id="pageSP"><a href="index.php?page=' . $pageS . '">Page suivante</a></div>';
@@ -44,11 +44,11 @@ else if($_GET['page']<=$nb_pages){
 
 $db = connexion('sira');
 $skip=5*$_GET['page'];
-$query='SELECT * FROM vehicule LIMIT 5 OFFSET '. $skip  ;
+$query='SELECT * FROM vehicule ORDER BY prix_journalier ASC LIMIT 5 OFFSET '. $skip   ;
 $req=$db->prepare($query);
 $req->execute();
 while($donnees = $req->fetch()){
-	echo '<a href="pages/voiture.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
+	echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
 	<img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . '€/mois</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
 }
 echo '<div id="pageSP"><a href="index.php?page=' . $pageP . '">Page précédente</a>';

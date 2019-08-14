@@ -345,3 +345,36 @@ h1
   justify-content: space-around;
   margin:20px;
 }
+
+.photOrder
+{
+  height:500px;
+}
+
+.infosCar
+{
+  display: flex;
+  margin:20px 20px;
+}
+
+.infos p
+{
+  font-size: 2.5em;
+  margin:20px 20px;
+}
+
+
+.infosA
+{
+  width:600px;
+}
+.infosA p
+{
+  font-size: 1.8em;
+  margin:5px 20px;
+}
+
+.photoTab2
+{
+  float:left;
+}
