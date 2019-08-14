@@ -1,17 +1,16 @@
+/*CODE CSS APPLIQUER AU BODY*/
 body
 {
   margin: 0;
   padding: 0;
-  
-  /* make it look decent enough */
   background: #232323;
   color: #cdcdcd;
   font-family: "Avenir Next", "Avenir", sans-serif;
-  
-  overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
+  overflow-x: hidden;
  
 }
 
+/*CSS DE LA BARRE DE NAVIGATION*/
 nav{
   position: sticky;
   top: 0;
@@ -20,7 +19,6 @@ a
 {
   text-decoration: none;
   color: white;
-  
   transition: color 0.3s ease;
 }
 
@@ -29,6 +27,8 @@ a:hover
   color: blue;
 }
 
+
+/*CSS DE L'AFFICHAGE DE L'INFORMATION DU MEMBRE*/
 div#infojoueur{
 
   border: solid;
@@ -36,100 +36,109 @@ div#infojoueur{
   margin-bottom: 10px;
   width: 230px;
   border-radius: 50px;
-
 }
-#cssSlider {
-  width: 800px;
-  height: 500px;
+/*FIN DES INFORMATION DU MEMBRE*/
+
+
+/*CSS SLIDER PAGE D'ACCUEIL*/
+#cssSlider 
+{
+  width: 2000px;
+  height: 700px;
   overflow: hidden;
-  margin-left: 400px;
-  border: 10px solid black;
+  margin: 0px auto;
+  border-top: 5px solid black;
+  border-bottom:  5px solid black0.;
 }
 
+/*TAILLE TOTALE DU SLIDER*/
 #sliderImages {
-  width : 4000px;
-  height: 500px;
+  width : 10000px;
+  height: 700px;
   overflow: hidden;
-  
  
+ /*ANIMATION SUR LES DIFFERENT NAVIGATEUR*/
   animation: slide 25s infinite;
   -moz-animation: slide 25s infinite;
   -webkit-animation: slide 25s infinite;
   -o-animation: slide 25s infinite;
 }
 
+/*PARTI VISIBLE DU SLIDER*/
 #sliderImages img {
   float: left;
+  width: 2000px;
+  height: 700px;
+
 }
 
+/*ANIMATION SUR LES DIFFERENT NAVIGATEUR*/
 @keyframes slide{
   0%{margin-left: 0px;}
   17%{margin-left: 0px;}
-  20%{margin-left: -800px;}
-  37%{margin-left: -800px;}
-  40%{margin-left: -1600px;}
-  57%{margin-left: -1600px;}
-  60%{margin-left: -2400px;}
-  77%{margin-left: -2400px;}
-  80%{margin-left: -3200px;}
-  97%{margin-left: -3200px;}
+  20%{margin-left: -2000px;}
+  37%{margin-left: -2000px;}
+  40%{margin-left: -4000px;}
+  57%{margin-left: -4000px;}
+  60%{margin-left: -6000px;}
+  77%{margin-left: -6000px;}
+  80%{margin-left: -8000px;}
+  97%{margin-left: -8000px;}
   100%{margin-left: 0px;}
 }
 
 @-moz-keyframes slide{
   0%{margin-left: 0px;}
   17%{margin-left: 0px;}
-  20%{margin-left: -800px;}
-  37%{margin-left: -800px;}
-  40%{margin-left: -1600px;}
-  57%{margin-left: -1600px;}
-  60%{margin-left: -2400px;}
-  77%{margin-left: -2400px;}
-  80%{margin-left: -3200px;}
-  100%{margin-left: -3200px;}
+  20%{margin-left: -2000px;}
+  37%{margin-left: -2000px;}
+  40%{margin-left: -4000px;}
+  57%{margin-left: -4000px;}
+  60%{margin-left: -6000px;}
+  77%{margin-left: -6000px;}
+  80%{margin-left: -8000px;}
+  100%{margin-left: -8000px;}
 }
 
 @-webkit-keyframes slide{
   0%{margin-left: 0px;}
   17%{margin-left: 0px;}
-  20%{margin-left: -800px;}
-  37%{margin-left: -800px;}
-  40%{margin-left: -1600px;}
-  57%{margin-left: -1600px;}
-  60%{margin-left: -2400px;}
-  77%{margin-left: -2400px;}
-  80%{margin-left: -3200px;}
-  100%{margin-left: -3200px;}
+  20%{margin-left: -2000px;}
+  37%{margin-left: -2000px;}
+  40%{margin-left: -4000px;}
+  57%{margin-left: -4000px;}
+  60%{margin-left: -6000px;}
+  77%{margin-left: -6000px;}
+  80%{margin-left: -8000px;}
+  100%{margin-left: -8000px;}
 }
 
 @-o-keyframes slide{
   0%{margin-left: 0px;}
   17%{margin-left: 0px;}
-  20%{margin-left: -800px;}
-  37%{margin-left: -800px;}
-  40%{margin-left: -1600px;}
-  57%{margin-left: -1600px;}
-  60%{margin-left: -2400px;}
-  77%{margin-left: -2400px;}
-  80%{margin-left: -3200px;}
-  100%{margin-left: -3200px;}
+  20%{margin-left: -2000px;}
+  37%{margin-left: -2000px;}
+  40%{margin-left: -4000px;}
+  57%{margin-left: -4000px;}
+  60%{margin-left: -6000px;}
+  77%{margin-left: -6000px;}
+  80%{margin-left: -8000px;}
+  100%{margin-left: -8000px;}
 }
 
-
+/*DEBUT DU MENU BURGER*/
 #menuToggle
 {
   display: block;
   position: absolute;
   top: 25px;
   right: 25px;
-  
   z-index: 1;
-
-  
   -webkit-user-select: none;
   user-select: none;
 }
 
+/*ON PLACE L'INPUT DU MENU BURGER*/
 #menuToggle input
 {
   display: block;
@@ -138,18 +147,14 @@ div#infojoueur{
   position: absolute;
   top: -7px;
   left: -5px;
-  
   cursor: pointer;
-  
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
-  
+  opacity: 0; /* ON LE CACHE */
+  z-index: 2; /* ON LE PLACE SOUS LE MENU BURGER */
   -webkit-touch-callout: none;
 }
 
-/*
- * Just a quick hamburger
- */
+
+/*MODELISATION DE L'ICONE DU MENU BURGER*/
 #menuToggle span
 {
   display: block;
@@ -180,10 +185,9 @@ div#infojoueur{
   transform-origin: 0% 100%;
 }
 
-/* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
+/* ON TRANSFORME LES BARRE DU MENU BURGER EN CROIX */
+
+/*ROTATION DE LA PREMIERE BARRE*/
 #menuToggle input:checked ~ span
 {
   opacity: 1;
@@ -191,28 +195,22 @@ div#infojoueur{
   background: #232323;
 }
 
-/*
- * But let's hide the middle one.
- */
+/* ON CACHE LA BARRE DU MILIEUX */
 #menuToggle input:checked ~ span:nth-last-child(3)
 {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
+/*ROTATION DE LA DEUXIEME BARRE DANS L'AUTRE SENS*/
 #menuToggle input:checked ~ span:nth-last-child(2)
 {
   opacity: 1;
   transform: rotate(-45deg) translate(0, -1px);
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
+
+/*ON LE PLACE EN HAUT A DROITE DE LA PAGE*/
 #menu
 {
   position: absolute;
@@ -221,10 +219,11 @@ div#infojoueur{
   padding: 50px;
   padding-top: 125px;
   right: -100px;
-  
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
+
+
   /* to stop flickering of text in safari */
   
   transform-origin: 0% 0%;
@@ -233,6 +232,7 @@ div#infojoueur{
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
+/*CSS DE LA LA LISTE DU MENU BURGER*/
 #menu li
 {
   padding: 10px 0;
@@ -240,21 +240,22 @@ div#infojoueur{
   color:#232323;
 }
 
-/*
- * And let's fade it in from the left
- */
+/*ON LA CACHE SUR LE COTE*/
 #menuToggle input:checked ~ ul
 {
   transform: scale(1.0, 1.0);
   opacity: 1;
 }
+/*FIN DU CSS DU MENU BURGER*/
 
+/*CSS DU TABLEAU*/
  table,  tr ,  td 
 {
   border: solid 2px white;
   border-collapse: collapse;
 }
 
+/*CSS DES PHOTOS DU TABLEAU*/
 .photoTab
 {
   height:200px;
@@ -265,6 +266,7 @@ div#infojoueur{
   padding:10px;
 }
 
+/*CSS DE L4INPUT DES MESSAGES*/
 textarea
 {
   height:300px;

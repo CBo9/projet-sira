@@ -3,8 +3,31 @@ $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('../templates/navbar.php');
 require('../utility/fonctions.php'); ?>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+<!-- PAGE "profile" -->
+
 <h1>Bienvenue <?= $_SESSION['prenom']?></h1>
 
+<div class="info" id="infojoueur">
+  		<ul class="list-joueur">
+  			<ol>
+
+  			<!-- AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
+  			<?php 
+  			echo "<br>";
+	  		echo "<li><u>Login:</u> ".$_SESSION["pseudo"]."</li><br>";
+	        echo "<li><u>Nom:</u> ".$_SESSION["nom"]."</li><br>";
+	        echo"<li><u>Prénom:</u> ".$_SESSION["prenom"]."</li><br>";
+	        echo"<li><u>Statut:</u> ".$_SESSION["statut"]."</li><br>";
+	        ?>
+	        <!-- FIN DE L'AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
+
+
+  			</ol>
+  		</ul>
+  	</div>
+
+<!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
 <?php  
 if ($_SESSION['statut']== 'admin') {
 
@@ -15,29 +38,18 @@ if ($_SESSION['statut']== 'admin') {
 
 }
 ?>
-<div class="info" id="infojoueur">
-  		<ul class="list-joueur">
-  			<ol>
-  				<?php 
-  			echo "<br>";
-	  		echo "<li><u>Login:</u> ".$_SESSION["pseudo"]."</li><br>";
-	        echo "<li><u>Nom:</u> ".$_SESSION["nom"]."</li><br>";
-	        echo"<li><u>Prénom:</u> ".$_SESSION["prenom"]."</li><br>";
-	        echo"<li><u>Statut:</u> ".$_SESSION["statut"]."</li><br>";
-	         
-	         ?>
-  			</ol>
-  		</ul>
-  	</div>
+<!-- FIN DE L'AFFICHAGE ADMINISTRATEUR -->
 
+<!-- FORMULAIRE DE MODIFICATION DES DONNEES UTILISATEUR -->
 <form action="" method="post" name="formulaire" id="formulaire">
 			<legend id="toggleUpdate">Modifier mes informations</legend>
 			<fieldset id="slideDown">
-					 <label for="civilite">Civilité</label>: <select name="civil" id="civilite" >
-					      <option hidden disabled selected  value id="empty" >---</option>
-					      <option value="Mr">Mr</option>
-					      <option value="Mme">Mme</option>
-					    </select><br><br>
+					<label for="civilite">Civilité</label>: 
+					<select name="civil" id="civilite" >
+					   <option hidden disabled selected  value id="empty" >---</option>
+					   <option value="Mr">Mr</option>
+					   <option value="Mme">Mme</option>
+					</select><br><br>
 					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required ><br><br>
 					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required ><br><br>
 					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required ><br><br>
@@ -50,33 +62,35 @@ if ($_SESSION['statut']== 'admin') {
 					
 					 <input type="checkbox" class="show_password_up" onclick="myFunction('nv_password')" title="Afficher le mot de passe"><br>
        <br><br>
-    
-					
+<!-- FIN DU FORMULAIRE DE MODIFICATIONS -->
+
+<!-- DEBUT DU CODE PHP -->
 <?php
 
+// DECALARATION DES VARIABLES
+$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
+$prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
+$mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;
+$pseudo=isset($_POST['pseudo']) ? $_POST['pseudo'] : NULL ;
+$password=isset($_POST['password']) ? md5($_POST['password']): NULL ;
+$civil=isset($_POST['civil']) ? ($_POST['civil']): $_SESSION['civilite'] ;
+$id= $_SESSION['id'];
 
-					$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
-	                $prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
-	                $mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;
-	                $pseudo=isset($_POST['pseudo']) ? $_POST['pseudo'] : NULL ;
-	                $password=isset($_POST['password']) ? md5($_POST['password']): NULL ;
-	                $civil=isset($_POST['civil']) ? ($_POST['civil']): $_SESSION['civilite'] ;
-	                
-	                $id= $_SESSION['id'];
-	                
-	               $connexion=connexion('sira');	
-					 
-					if ((requete($pseudo,'pseudo','sira','membres'))!=NULL AND ($pseudo!= $_SESSION['pseudo'])){
-				    	echo ' <span class="erreur"> Ce pseudo est déjà pris</span>';
+// CONNEXION A LA BASE DE DONNEE
+$connexion=connexion('sira');
+
+//VERIFICATION DU PSEUDO  
+if ((requete($pseudo,'pseudo','sira','membres'))!=NULL AND ($pseudo!= $_SESSION['pseudo'])){
+	echo ' <span class="erreur"> Ce pseudo est déjà pris</span>';
 				    }else{
 
-					if (isset($password) AND $password==$_SESSION['password']){
-					if ($_POST['nv_password']!=NULL){
-							$password=isset($_POST['nv_password']) ? md5($_POST['nv_password']) : NULL;
+if (isset($password) AND $password==$_SESSION['password']){
+	if ($_POST['nv_password']!=NULL){
+	$password=isset($_POST['nv_password']) ? md5($_POST['nv_password']) : NULL;
 						}
 
 
-
+						// MISE A JOUR DES DONNEES DE L'UTILISATEUR
 					$req= $connexion->prepare("UPDATE membres SET nom= '$nom', prenom='$prenom',mail= '$mail',pseudo= '$pseudo',mdp= '$password',civilite='$civil'  WHERE id ='$id'");
 					$req->execute(array(
 						'nom' => $nom,

@@ -2,11 +2,15 @@
 $titrePage='Modifictation des agences';
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
+
 //INSERTION DES NOUVELLES DONNES DANS LA BDD APRES REMPLISSAGE DU FORM
+
+// SI LE STATUT EST DIFFERENT DE "admin"
 if(!isset($_SESSION['id']) OR $_SESSION['statut']!='admin'){
 	header('location: ../index.php');
 }
 
+// RECUPERATION DES DONNEES
 $id=$_GET['ida'];
 $connect= connexion('sira');
 $req=$connect->prepare("SELECT * FROM agences WHERE id_agence='$id'");
@@ -21,6 +25,7 @@ while($donnees = $req->fetch()){
 }
 ?>
 
+<!-- DEBUT DU FORMULAIRE DE MODIFICATION DES DONNEES -->
 <body>
 	<h1>Modifiez une agence</h1>
 	<h2>Administateur : <?= $_SESSION['prenom']?></h2>
@@ -54,11 +59,14 @@ while($donnees = $req->fetch()){
 			<input type="submit" name="envoyer">
 		</fieldset>
 	</form>
+	<!-- FIN DU FORMULAIRE DE MODIFICATION -->
 </body>
 </html>
 
+<!-- DEBUT DU CODE PHP -->
 <?php
 
+// ENVOI DES DONNEES
 if (isset($_POST['envoyer'])) {
 	$agence = isset($_POST['nom_agence']) ? $_POST['nom_agence'] : NULL;
 	$adresse = isset($_POST['adresse']) ? $_POST['adresse'] : NULL;
@@ -94,6 +102,8 @@ if (isset($_POST['envoyer'])) {
 			echo "La photo est trop large ";
 		}
 	}
+
+	// REQUETE DE MISE A JOUR
 	$db=connexion('sira');
 	$insert=$db->prepare("UPDATE agences SET titreA = '$agence', adresse = '$adresse',ville = '$ville',cp = '$cp', descriptionA = '$des', photoA = '$image' WHERE id_agence = '$id'");
 	$insert->execute(['titreA'=>$agence,
@@ -104,5 +114,7 @@ if (isset($_POST['envoyer'])) {
 		'photoA'=>$image]);
 		header('location:ajouta.php');
 }
+// FIN DE LA REQUETE DE MISE A JOUR
+
 include '../utility/picPreview.js';
 ?>

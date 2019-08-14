@@ -1,7 +1,8 @@
 <?php
-$titrePage='Modifictation des informations';
+$titrePage='Modification des informations';
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
+
 //INSERTION DES NOUVELLES DONNES DANS LA BDD APRES REMPLISSAGE DU FORM
 if(!isset($_SESSION['id']) OR $_SESSION['statut']!='admin'){
 	header('location: ../index.php');
@@ -12,7 +13,7 @@ if(!isset($_GET['idv'])){
 
 
 
-
+// RECUPERATION DES DONNEES DES VEHICULE
 $id=$_GET['idv'];
 $connect= connexion('sira');
 $req=$connect->prepare("SELECT * FROM vehicule AS v INNER JOIN agences AS a ON v.id_agence=a.id_agence  WHERE id_vehicule='$id'");
@@ -29,6 +30,8 @@ while($donnees = $req->fetch()){
 }
 
 ?>
+
+<!-- FORMULAIRE DE MODIFICATION -->
 <body>
 	<h1>Modifiez un véhicule</h1>
 	<h2>Administateur : <?= $_SESSION['prenom']?></h2>
@@ -64,12 +67,16 @@ while($donnees = $req->fetch()){
 			<input type="submit" name="modif" >
 		</fieldset>
 	</form>
+	<!-- FIN DU FORMULAIRE DE MODIFICATION -->
 
 
 </body>
 </html>
 
+<!-- DEBUT DU CODE PHP -->
 <?php
+
+// DECLARATION DES VARIABLES
 $agence= isset($_POST['agence']) ? $_POST['agence'] : $ida;
 $voiture = isset($_POST['voiture']) ? $_POST['voiture'] : NULL;
 $marque = isset($_POST['marque']) ? $_POST['marque'] : NULL;
@@ -77,6 +84,7 @@ $modele = isset($_POST['modele']) ? $_POST['modele'] : NULL;
 $des = isset($_POST['des']) ? $_POST['des'] : NULL;
 $prixj = isset($_POST['prixj']) ? $_POST['prixj'] : NULL;
 
+// ENVOI DE DONNEES
 if (isset($_POST['modif'])) {
 
 
@@ -110,6 +118,8 @@ if (isset($_POST['modif'])) {
 			echo "La photo est trop large ";
 		}
 	}
+
+	// REQUETE DE MISE A JOUR
 	$db=connexion('sira');
 	$insert=$db->prepare("UPDATE vehicule SET id_agence='$agence', titreV = '$voiture', marque = '$marque', modele = '$modele', descriptionV = '$des', photoV = '$image' , prix_journalier = '$prixj' WHERE id_vehicule = '$id'");
 	$insert->execute(['id_agence'=>$agence,
@@ -121,6 +131,7 @@ if (isset($_POST['modif'])) {
 		'prix_journalier'=>$prixj]);
 	header('location:ajoutv.php');
 }
+// FIN DE REQUETE
 
 
 include '../utility/picPreview.js';

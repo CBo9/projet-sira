@@ -1,18 +1,20 @@
 <?php
 
+// PAGE DU SUPPORT
+
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
 
+
 ?>
-<head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	
-</head>
+
 <body class="support-page">
 <div id="formulaire-support">
-<form  name="formulaire" method="post" action="">
+
+	<!-- DEBUT DU FORMULAIRE -->
+	<form  name="formulaire" method="post" action="">
 	<fieldset>
-	<legend>Envoyer une requête au support</legend>
+		<legend>Envoyer une requête au support</legend>
 					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required ><br><br>
 					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required ><br><br>
 					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required class="mail-form-support" ><br><br>
@@ -24,8 +26,13 @@ require('../utility/fonctions.php');
        				<input type="submit" name="envoyer" value="Envoyer ma demande">
       </fieldset>
 </form>
+<!-- FIN DU FORMULAIRE -->
+
 </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<!-- DEBUT DU CODE PHP -->
 <?php 
 
 if (isset($_SESSION['id'])){
@@ -40,10 +47,13 @@ if (isset($_SESSION['id'])){
 </script>";
 }
 ?>
-
+<!-- FIN DU CODE PHP -->
 </body>
 
+<!-- DEBUT DU CODE PHP -->
 <?php 
+
+// REQUETE DE L'INSERTION DU LESSAGE DANS LA BASE DE DONNEE
 $nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
 	                $prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
 	                $mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;
@@ -66,7 +76,9 @@ $nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
 							'message'=>$message]
 								);
 			}
+			//FIN DE REQUETE D'INSERTION
 				
 ?>
+
 			
 		

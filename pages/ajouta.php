@@ -4,50 +4,71 @@ require('../templates/navbar.php');
 require('../utility/fonctions.php');
 //INSERTION DES NOUVELLES DONNES DANS LA BDD APRES REMPLISSAGE DU FORM
 
+// SI LE STATUT EST DIFFERENT DE "admin"
 if(!isset($_SESSION['id']) OR $_SESSION['statut']!='admin'){
 	header('location: ../index.php');
 }
+
+// CODE PHP L'AJOUT DE L'AGENCE. BOUTON "envoyer" DE LA PAGE AJOUT
 if (isset($_POST['envoyer'])) {
 
-
+// VERIFICATION DE LA PHOTO
 if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 
-
+// LE FICHIER NE DOIT PAS EXEDER 1Mo
 	if ($_FILES['mfichier']['size'] <= 1000000) {
 
 
-		// Extentions autorisées
+		// EXTENSION AUTORISEES
 		$extension_autorisees = ["jpg", "jpeg", "png", "gif"];
 		$info= pathinfo($_FILES['mfichier']['name']);
 		
-		// Extentions de notre fichier
+		// EXTENSION DE NOTRE FICHIER
 		$extension_uploadee = $info['extension'];
 		
-		// On verifie l'extention
+		// ON VERIFIE L'EXTENSION
 		if (in_array($extension_uploadee, $extension_autorisees)) {
 			
 			move_uploaded_file($_FILES['mfichier']['tmp_name'], '../img/agences/' .basename($_FILES['mfichier']['name']));
+
+			// DECLARATION DE LA VARIABLE IMAGE
 			$image = basename($_FILES['mfichier']['name']);
+
+			// INSERTION DE DONNEES
 			$db=connexion('sira');
-			$insert=$db->prepare('INSERT INTO agences (titreA, adresse, cp, ville,descriptionA, photoA) VALUES(:nomAgence, :addr, :cp, :ville, :des, :photo)');
-							$insert->execute(['nomAgence'=>$_POST['nom_agence'],
-				  							  'addr' =>$_POST['adresse'],
-				  							  'cp'=> $_POST['cp'],
-				  							  'ville' => $_POST['ville'],
-				  							'des'=>$_POST['des'],
-				  							'photo'=>$image]);
+			$insert=$db->prepare(
+				'INSERT INTO agences (
+				titreA, 
+				adresse, 
+				cp, 
+				ville,
+				descriptionA, 
+				photoA) 
+				VALUES(
+				:nomAgence, 
+				:addr, :cp, 
+				:ville, 
+				:des, :
+				photo)');
+			$insert->execute(
+				['nomAgence'=>$_POST['nom_agence'],
+				 'addr' =>$_POST['adresse'],
+				  'cp'=> $_POST['cp'],
+				  'ville' => $_POST['ville'],
+				 'des'=>$_POST['des'],
+				  'photo'=>$image]);
 			
 		}
+		// FIN DE LA VERIFICATION DE L'EXTENSION ET DE LA REQUETE D'INSERTION
 	
 	}
+	// FIN DE LA VERIFICATION DU FICHIER
 	else{
 
-		echo "Votre fichier est trop volumineux!!! ";
+		echo " Les données n'ont pas été modifiées! ";
 	}
 }
 }
-
-
 ?>
 
 

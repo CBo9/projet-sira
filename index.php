@@ -5,8 +5,6 @@ require('utility/fonctions.php');?>
 
 <h1>Bienvenue sur Localoc</h1>
 
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 <?php if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
 <div id="cssSlider">
