@@ -18,6 +18,7 @@ nav{
   position: sticky;
   top: 0;
 }
+
 a
 {
   text-decoration: none;
@@ -139,7 +140,7 @@ div#infojoueur{
 #menuToggle
 {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 25px;
   z-index: 1;
@@ -247,6 +248,12 @@ div#infojoueur{
   padding: 10px 0;
   font-size: 22px;
   color:#232323;
+  transition:0.5s ease;
+}
+
+#menu li:hover{
+  transform:translate(20px);
+  color:#C40E0E;
 }
 
 /*ON LA CACHE SUR LE COTE*/
@@ -359,6 +366,21 @@ h1
   margin:20px;
 }
 
+#pageS , #pageP{
+  transition:0.4s ease;
+  color:#c94040;
+}
+
+#pageS:hover{
+  transform: translate(20px);
+  color:#E9B2B2;
+}
+
+#pageP:hover{
+  transform: translate(-20px);
+  color:#E9B2B2;
+}
+
 .photOrder
 {
   height:500px;
@@ -402,9 +424,21 @@ footer{
   z-index:150;
 }
 
+footer a, footer ul li{
+  color:#8f0000;
+}
+
+footer a:hover  {
+  color:#BA1919;
+}
+
 footer p{
   padding:0px;
   margin:0px;
+}
+
+.footerRef a{
+ font-size:0.8em;
 }
 
 * {

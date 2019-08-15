@@ -77,7 +77,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 
 ?>
 
-<body id="page_ajouta">
+<body >
 
 
 <!--  DEBUT DE L'AFFICHAGE DU TABLEAU DES VEHICULES DE LA BDD-->	

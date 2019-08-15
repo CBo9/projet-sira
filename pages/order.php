@@ -30,7 +30,9 @@ while($donnees = $req->fetch()){
 }
 // FIN DE LA RECUPERATION
 
-?> <h1>Réserver la <?= $titre?></h1>
+?> 
+<div class="wrapper">
+<h1>Réserver la <?= $titre?></h1>
 
 <!-- AFFICHAGE DE L'INFORMATION DE LA VOITURE + AFFICHAGE -->
 <div class="infosCar">
@@ -70,6 +72,8 @@ while($donnees = $req->fetch()){
 
 		<p id="res"></p>
 	</form>
+</div>
+<div class="push"></div>
 </div>
 <!-- FIN DE LA SECTION RESERVATION -->
 
