@@ -1,9 +1,10 @@
 
-/*CODE CSS APPLIQUER AU BODY*/
+/*CODE CSS APPLIQUÉ AU BODY*/
 body
 {
- 
-  margin: 0;
+  height: 100%;
+  min-height:100%;
+  margin: 0 ;
   padding: 0;
   background: #232323;
   color: #cdcdcd;
@@ -39,7 +40,7 @@ div#infojoueur{
   border: solid;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 230px;
+  width: 300px;
   border-radius: 50px;
   display: flex;
   flex-direction: column;
@@ -65,14 +66,14 @@ div#infojoueur{
   height: 700px;
   overflow: hidden;
  
- /*ANIMATION SUR LES DIFFERENT NAVIGATEUR*/
+ /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
   animation: slide 25s infinite;
   -moz-animation: slide 25s infinite;
   -webkit-animation: slide 25s infinite;
   -o-animation: slide 25s infinite;
 }
 
-/*PARTI VISIBLE DU SLIDER*/
+/*PARTIE VISIBLE DU SLIDER*/
 #sliderImages img {
   float: left;
   width: 2000px;
@@ -80,7 +81,7 @@ div#infojoueur{
 
 }
 
-/*ANIMATION SUR LES DIFFERENT NAVIGATEUR*/
+/*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
 @keyframes slide{
   0%{margin-left: 0px;}
   17%{margin-left: 0px;}
@@ -193,7 +194,7 @@ div#infojoueur{
   transform-origin: 0% 100%;
 }
 
-/* ON TRANSFORME LES BARRE DU MENU BURGER EN CROIX */
+/* ON TRANSFORME LES BARRES DU MENU BURGER EN CROIX */
 
 /*ROTATION DE LA PREMIERE BARRE*/
 #menuToggle input:checked ~ span
@@ -341,7 +342,7 @@ h1
 .carSection:hover .photoSect
 {
   height:120%;
-  z-index:10;
+  z-index:2;
 }
 
 #blah
@@ -349,7 +350,7 @@ h1
   height:200px;
 }
 
-/*CSS 'page suivante' ET 'page précèdente'*/
+/*CSS 'page suivante' ET 'page précédente'*/
 #pageSP
 {
   text-align: center;
@@ -391,5 +392,46 @@ h1
   float:left;
 }
 
+/*CSS RELATIF AU FOOTER*/
+footer{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #181818;
+  width:100%;
+  z-index:150;
+}
 
+footer p{
+  padding:0px;
+  margin:0px;
+}
+
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -80px; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push {
+    height: 80px; /* .push must be the same height as .footer */
+}
+
+
+/*CSS POUR LA PAGE D'INSCRIPTION*/
+.mainLogreg{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log_reg{
+  margin: 50px;
+}
 

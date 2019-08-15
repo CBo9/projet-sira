@@ -9,6 +9,7 @@ require('../utility/fonctions.php');
 ?>
 
 <body class="support-page">
+	<div class="wrapper">
 <div id="formulaire-support">
 
 	<!-- DEBUT DU FORMULAIRE -->
@@ -28,6 +29,8 @@ require('../utility/fonctions.php');
 </form>
 <!-- FIN DU FORMULAIRE -->
 
+</div>
+<div class="push"></div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -77,7 +80,7 @@ $nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
 								);
 			}
 			//FIN DE REQUETE D'INSERTION
-				
+		require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');		
 ?>
 
 			

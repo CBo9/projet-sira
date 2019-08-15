@@ -127,4 +127,5 @@ if (isset($_POST['envoi'])) {
 	// FIN DE LA REQUETE D'INSERTION DANS LA TABLE COMMANDE
 
 }
-
+require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');
+?>

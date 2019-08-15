@@ -2,10 +2,12 @@
 $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('../templates/navbar.php');
 require('../utility/fonctions.php'); ?>
+<head>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+</head>
 
 <!-- PAGE "profile" -->
-
+<div class="wrapper">
 <h1>Bienvenue <?= $_SESSION['prenom']?></h1>
 
 <!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
@@ -152,7 +154,8 @@ while($donnees =$requete->fetch()){
 
   ?>
 </table>
-
+<div class="push"></div>
+</div>
 
 
 <script>
@@ -182,3 +185,4 @@ $(function() {
     });
 });
 </script>
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php'); ?>
