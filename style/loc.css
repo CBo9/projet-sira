@@ -31,6 +31,12 @@ a:hover
   color: blue;
 }
 
+h2.indexaf{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: underline;
+}
 
 /*CSS DE L'AFFICHAGE DE L'INFORMATION DU MEMBRE*/
 
@@ -468,4 +474,5 @@ footer, .push {
 .log_reg{
   margin: 50px;
 }
+
 

@@ -15,7 +15,7 @@ require('utility/fonctions.php');?>
         <img id="si_2" src="imgcarr/voiture2.jpg" alt="" />
         <img id="si_3" src="imgcarr/voiture3.jpg" alt="" />
         <img id="si_4" src="imgcarr/voiture4.jpg" alt="" />
-        <img id="si_5" src="imgcarr/voiture1.jpg" alt="" />
+        <img id="si_5" src="imgcarr/voiture5.png" alt="" />
         <div style="clear:left;"></div>
       </div>
     </div>
@@ -24,7 +24,7 @@ require('utility/fonctions.php');?>
   <?php endif; ?>
   <!-- FIN DE LA CONDITION POUR L'AFFICHAGE DU SLIDER SUELEMENT SUR LA PAGE D'ACCUEIL -->
 
-
+<h2 class="indexaf">Liste des véhicules disponible</h2>
   <?php 
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;

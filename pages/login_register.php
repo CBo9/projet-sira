@@ -60,10 +60,7 @@ if (isset($_SESSION['id'])){
 </div>
 <?php 
 require('../utility/post.php');
-if ($_SESSION['error']==1){
-  echo 'Le mot de passe est incorrect ';
-  session_destroy();
-}
+
 ?>
 
 <script type="text/javascript">

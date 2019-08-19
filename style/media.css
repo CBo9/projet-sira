@@ -1,0 +1,228 @@
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 200px) and (max-width: 480px){
+
+
+/*CSS SLIDER PAGE D'ACCUEIL*/
+#cssSlider 
+{
+  width: 480px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0px auto;
+  border-top: 5px solid black;
+  border-bottom:  5px solid black.;
+}
+
+/*TAILLE TOTALE DU SLIDER*/
+#sliderImages {
+  width : 2400px;
+  height: 250px;
+  overflow: hidden;
+ 
+ /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+  animation: slide 25s infinite;
+  -moz-animation: slide 25s infinite;
+  -webkit-animation: slide 25s infinite;
+  -o-animation: slide 25s infinite;
+}
+
+/*PARTIE VISIBLE DU SLIDER*/
+#sliderImages img {
+  float: left;
+  width: 480px;
+  height: 250px;
+
+}
+
+/*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+@keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -480px;}
+  37%{margin-left: -480px;}
+  40%{margin-left: -960px;}
+  57%{margin-left: -960px;}
+  60%{margin-left: -1440px;}
+  77%{margin-left: -1440px;}
+  80%{margin-left: -1920px;}
+  97%{margin-left: -1920px;}
+  100%{margin-left: 0px;}
+}
+
+@-o-keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -480px;}
+  37%{margin-left: -480px;}
+  40%{margin-left: -960px;}
+  57%{margin-left: -960px;}
+  60%{margin-left: -1440px;}
+  77%{margin-left: -1440px;}
+  80%{margin-left: -1920px;}
+  97%{margin-left: -1920px;}
+  100%{margin-left: 0px;}
+
+}
+
+@-webkit-keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -480px;}
+  37%{margin-left: -480px;}
+  40%{margin-left: -960px;}
+  57%{margin-left: -960px;}
+  60%{margin-left: -1440px;}
+  77%{margin-left: -1440px;}
+  80%{margin-left: -1920px;}
+  97%{margin-left: -1920px;}
+  100%{margin-left: 0px;}
+}
+
+
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 720px){
+#cssSlider 
+{
+  width: 720px;
+  height: 450px;
+  overflow: hidden;
+  margin: 0px auto;
+  border-top: 5px solid black;
+  border-bottom:  5px solid black.;
+}
+
+/*TAILLE TOTALE DU SLIDER*/
+#sliderImages {
+  width : 3600px;
+  height: 450px;
+  overflow: hidden;
+ 
+ /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+  animation: slide 25s infinite;
+  -moz-animation: slide 25s infinite;
+  -webkit-animation: slide 25s infinite;
+  -o-animation: slide 25s infinite;
+}
+
+/*PARTIE VISIBLE DU SLIDER*/
+#sliderImages img {
+  float: left;
+  width: 720px;
+  height: 450px;
+
+}
+
+/*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+@keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -720px;}
+  37%{margin-left: -720px;}
+  40%{margin-left: -1440px;}
+  57%{margin-left: -1440px;}
+  60%{margin-left: -2160px;}
+  77%{margin-left: -2160px;}
+  80%{margin-left: -2880px;}
+ 97%{margin-left: -2880px;}
+  100%{margin-left: 0px;}
+  
+}
+
+@-webkit-keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -720px;}
+  37%{margin-left: -720px;}
+  40%{margin-left: -1440px;}
+  57%{margin-left: -1440px;}
+  60%{margin-left: -2160px;}
+  77%{margin-left: -2160px;}
+  80%{margin-left: -2880px;}
+  97%{margin-left: -2880px;}
+  100%{margin-left: 0px;}
+}
+
+@-o-keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -720px;}
+  37%{margin-left: -720px;}
+  40%{margin-left: -1440px;}
+  57%{margin-left: -1440px;}
+  60%{margin-left: -2160px;}
+  77%{margin-left: -2160px;}
+  80%{margin-left: -2880px;}
+  97%{margin-left: -2880px;}
+  100%{margin-left: 0px;}
+
+
+}
+}
+
+
+@media screen and (min-width: 721px) and (max-width: 1024px){
+
+#cssSlider 
+{
+  width: 1024px;
+  height: 650px;
+  overflow: hidden;
+  margin: 0px auto;
+  border-top: 5px solid black;
+  border-bottom:  5px solid black.;
+}
+
+/*TAILLE TOTALE DU SLIDER*/
+#sliderImages {
+  width : 5120px;
+  height: 650px;
+  overflow: hidden;
+ 
+ /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+  animation: slide 25s infinite;
+  -moz-animation: slide 25s infinite;
+  -webkit-animation: slide 25s infinite;
+  -o-animation: slide 25s infinite;
+}
+
+/*PARTIE VISIBLE DU SLIDER*/
+#sliderImages img {
+  float: left;
+  width: 1024px;
+  height: 650px;
+
+}
+
+/*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+@keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -1024px;}
+  37%{margin-left: -1024px;}
+  40%{margin-left: -2048px;}
+  57%{margin-left: -2048px;}
+  60%{margin-left: -3072px;}
+  77%{margin-left: -3072px;}
+  80%{margin-left: -4096px;}
+  97%{margin-left: -4096px;}
+  100%{margin-left: 0px;}
+  
+}
+
+@-webkit-keyframes slide{
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -1024px;}
+  37%{margin-left: -1024px;}
+  40%{margin-left: -2048px;}
+  57%{margin-left: -2048px;}
+  60%{margin-left: -3072px;}
+  77%{margin-left: -3072px;}
+  80%{margin-left: -4096px;}
+  97%{margin-left: -4096px;}
+  100%{margin-left: 0px;}
+
+}
