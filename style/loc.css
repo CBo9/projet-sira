@@ -19,6 +19,7 @@
 }
 
 /*CODE CSS APPLIQUÉ AU BODY*/
+
 body
 {
   height: 100%;
@@ -52,6 +53,13 @@ a:hover
 
 h1{
   color:#FF2828;
+}
+
+h2.indexaf{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: underline;
 }
 /*CSS DE L'AFFICHAGE DE L'INFORMATION DU MEMBRE*/
 
@@ -473,6 +481,13 @@ html, body {
     min-height: 100%;
     height: auto !important;
     height: 100%;
+    padding:20px;
+    margin: 0 auto -80px; /* the bottom margin is the negative value of the footer's height */
+}
+.wrapperAcc {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
     margin: 0 auto -80px; /* the bottom margin is the negative value of the footer's height */
 }
 footer, .push {
@@ -491,4 +506,73 @@ footer, .push {
   margin: 50px;
 }
 
+/*CSS POUR FORMULAIRE SUPPORT*/
 
+.support-page legend
+{
+  font-size: 1.2em;
+  color:#FF2828;
+  text-decoration:underline #4D88D5;
+  z-index:100;
+}
+
+form
+{
+  font-family:Archive;
+}
+
+.font-placeholder::-webkit-input-placeholder { 
+  font-family: Oswald Regular;
+  font-size:0,8em;
+  color:white;
+}
+
+.font-placeholder::-moz-placeholder { 
+  font-family: Oswald Regular;
+  font-size:0.8em;
+  color:white;
+}
+textarea
+{
+  border:#8B9DC3;
+  border-radius:7px;
+  background-color:#8B9DC3;
+  color:white;
+  font-family:Oswald Regular;
+  padding:5px;
+}
+
+ input, select
+{
+  border-radius:5px;
+  border:#8B9DC3;
+  background-color:#8B9DC3;
+  color:white;
+  font-family:Oswald Regular;
+  font-size: 1.5em;
+  margin:10px;
+}
+
+.mail-form-support, textarea
+{
+  width:300;
+  resize: none;
+}
+
+#formulaire-support
+{
+  filter: blur 5px;
+  width:300px;
+  padding:50px 0px;
+  margin:0 auto;
+  position: relative;
+}
+
+fieldset{
+  border-color:#FF2828;
+  background-color: rgba(77,136,213,0.15); 
+}
+
+.support-page fieldset{
+  border-color:#4D88D5;
+}

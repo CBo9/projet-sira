@@ -2,7 +2,7 @@
 $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('templates/navbar.php');
 require('utility/fonctions.php');?>
-<div class="wrapper">
+<div class="wrapperAcc">
   <h1>Bienvenue sur Localoc</h1>
   <h2>Louez une voiture au meilleur prix</h2>
 
@@ -25,7 +25,7 @@ require('utility/fonctions.php');?>
   <?php endif; ?>
   <!-- FIN DE LA CONDITION POUR L'AFFICHAGE DU SLIDER SUELEMENT SUR LA PAGE D'ACCUEIL -->
 
-<h2 class="indexaf">Liste des véhicules disponible</h2>
+<h2 class="indexaf">Liste des véhicules disponibles</h2>
   <?php 
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
