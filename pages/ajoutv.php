@@ -136,7 +136,8 @@ while($donnees =$requete->fetch()){
 			<input type="text" name="prixj">
 			<br><br>
 			<label>Décrivez le véhicule</label>
-			<input type="text" name="des">
+			<br>
+			<textarea type="text" name="des"></textarea>
 			<br><br>
 			<label>Ajoutez une photo</label>
 			<br><br>

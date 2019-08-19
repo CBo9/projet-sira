@@ -336,6 +336,23 @@ h1
   color:#FF2828;
 }
 
+#mainTitle{
+ font-family: Archive;
+ margin-bottom: 10px;  
+}
+
+#mainTitle .char{
+
+  --delay: calc((var(--char-index) + 1) * 400ms);
+    animation: breathe 4000ms infinite both;
+    animation-delay: var(--delay);
+}
+@keyframes breathe{
+  60%{
+    color: blue;
+    
+  }
+}
 #slideDown{
   display:none;
 }
@@ -535,6 +552,8 @@ textarea
   color:white;
   font-family:Oswald Regular;
   padding:5px;
+  font-size: 1.5em;
+
 }
 
  input, select

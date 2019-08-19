@@ -1,5 +1,5 @@
 <?php
-
+$titrePage="Support";
 // PAGE DU SUPPORT
 
 require('../templates/navbar.php');

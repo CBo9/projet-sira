@@ -3,8 +3,8 @@ $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('templates/navbar.php');
 require('utility/fonctions.php');?>
 <div class="wrapperAcc">
-  <h1>Bienvenue sur Localoc</h1>
-  <h2>Louez une voiture au meilleur prix</h2>
+  <h1 id="mainTitle" data-splitting>Bienvenue sur Localoc</h1>
+  <h2 id="subTitle">Louez une voiture au meilleur prix</h2>
 
   <!-- LE SLIDER NE S'AFFICHE QUE SUR LA PAGE D'ACCUEIL -->
   <?php if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
@@ -73,6 +73,7 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 ?>
 <div class="push"></div>
 </div>
+<script type="text/javascript">Splitting()</script>
 <?php 
 // FIN DE LA REQUETE D'AFFICHAGE
 require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');

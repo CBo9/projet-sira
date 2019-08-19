@@ -8,6 +8,9 @@ session_start();
     <link rel="stylesheet" type="text/css" href="/projet_sira/style/media.css">
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 	<title><?= $titrePage ?></title>
 </head>
 <body>

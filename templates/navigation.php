@@ -43,8 +43,7 @@ echo '
 	else if($_SESSION['statut']!="admin"){
 echo 		
 			'
-			<a href="/projet_sira/index.php"><li>Accueil </li></a>
-			<a href=""  ><li>Mes commandes</li></a>		
+			<a href="/projet_sira/index.php"><li>Accueil </li></a>		
 			<a href="/projet_sira/pages/support.php"  ><li>Support</li></a>
 			<a href="/projet_sira/pages/profile.php"  ><li>'. $_SESSION['pseudo'] . '</li></a>
 			<a  onclick="deconnect()" class="dc-link" ><li>Deconnexion</li></a>
