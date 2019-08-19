@@ -1,3 +1,22 @@
+@font-face {
+  font-family: Kaneda;
+  src: url(../fonts/Kaneda.ttf) ;  
+}
+
+@font-face {
+  font-family:Archive;
+  src: url(../fonts/Archive/Archive-Regular.ttf) ;  
+}
+
+@font-face {
+  font-family:Oswald regular;
+  src: url(../fonts/Oswald/Oswald-Regular.ttf) ;  
+}
+
+@font-face {
+  font-family:Oswald bold;
+  src: url(../fonts/Oswald/Oswald-Bold.ttf) ;  
+}
 
 /*CODE CSS APPLIQUÉ AU BODY*/
 body
@@ -31,7 +50,9 @@ a:hover
   color: blue;
 }
 
-
+h1{
+  color:#FF2828;
+}
 /*CSS DE L'AFFICHAGE DE L'INFORMATION DU MEMBRE*/
 
 
@@ -173,7 +194,7 @@ div#infojoueur{
   margin-bottom: 5px;
   position: relative;
   
-  background: #cdcdcd;
+  background: #FF2828;
   border-radius: 3px;
   
   z-index: 1;
@@ -202,7 +223,7 @@ div#infojoueur{
 {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: #C40E0E;
 }
 
 /* ON CACHE LA BARRE DU MILIEUX */
@@ -309,6 +330,7 @@ h1
 {
   margin-top:0;
   padding-top:40px;
+  color:#FF2828;
 }
 
 #slideDown{
@@ -469,3 +491,73 @@ footer, .push {
   margin: 50px;
 }
 
+/*CSS POUR FORMULAIRE SUPPORT*/
+
+.support-page legend
+{
+  font-size: 1.2em;
+  color:#FF2828;
+  text-decoration:underline #4D88D5;
+  z-index:100;
+}
+
+form
+{
+  font-family:Archive;
+}
+
+.font-placeholder::-webkit-input-placeholder { 
+  font-family: Oswald Regular;
+  font-size:0,8em;
+  color:white;
+}
+
+.font-placeholder::-moz-placeholder { 
+  font-family: Oswald Regular;
+  font-size:0.8em;
+  color:white;
+}
+textarea
+{
+  border:#8B9DC3;
+  border-radius:7px;
+  background-color:#8B9DC3;
+  color:white;
+  font-family:Oswald Regular;
+  padding:5px;
+}
+
+ input, select
+{
+  border-radius:5px;
+  border:#8B9DC3;
+  background-color:#8B9DC3;
+  color:white;
+  font-family:Oswald Regular;
+  font-size: 1.5em;
+  margin:10px;
+}
+
+.mail-form-support, textarea
+{
+  width:300;
+  resize: none;
+}
+
+#formulaire-support
+{
+  filter: blur 5px;
+  width:300px;
+  padding:50px 0px;
+  margin:0 auto;
+  position: relative;
+}
+
+fieldset{
+  border-color:#FF2828;
+  background-color: rgba(77,136,213,0.15); 
+}
+
+.support-page fieldset{
+  border-color:#4D88D5;
+}

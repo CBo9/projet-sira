@@ -10,8 +10,8 @@ if (isset($_SESSION['id'])){
   <div class="mainLogreg">
     <!-- FORMULAIRE DE CONNEXION-->
     <div class="log_reg">
-      <h1>Se connecter</h1>
       <form method="post"action="">
+        <legend> <h1>Se connecter</h1></legend>
        <input type="text" name="search_pseudo" id="search_pseudo" placeholder="Pseudo" required  />
        <input type="password" name="password" id="password1" placeholder="Mot de passe" required />
        <input type="checkbox"  onclick="myFunction('password1')" title="Afficher le mot de passe">
