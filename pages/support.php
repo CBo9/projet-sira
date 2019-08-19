@@ -20,7 +20,7 @@ require('../utility/fonctions.php');
 					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required ><br><br>
 					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required class="mail-form-support" ><br><br>
 					<label for="pseudo">Pseudo</label>:<input type="text" name="pseudo" id="pseudo" maxlength="35"  required ><br><br>
-					<label for="message">Message</label>:<textarea type="text" name="message" id="message" maxlength="300"  required  placeholder="Décrivez votre question ou votre problème du mieux que possible. Francais et anglais acceptés." class="font-placeholder"></textarea> <br><br>
+					<label for="message">Message</label>:<br><textarea type="text" name="message" id="message" maxlength="300"  required  placeholder="Décrivez votre question ou votre problème du mieux que possible. Francais et anglais acceptés." class="font-placeholder"></textarea> <br><br>
 				    
        				<br><br>
 

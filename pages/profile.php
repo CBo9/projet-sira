@@ -15,7 +15,7 @@ require('../utility/fonctions.php'); ?>
 if ($_SESSION['statut']== 'admin') {
 
 		echo '<fieldset class="administration"><a href="membre.php"> Gestion des membres</a><br>';
-		echo '<a href="ajoutv.php"> Gestion des voiture</a><br>';
+		echo '<a href="ajoutv.php"> Gestion des voitures</a><br>';
 		echo '<a href="ajouta.php"> Gestion des agences</a></fieldset>';
 
 }
