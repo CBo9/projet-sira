@@ -1,7 +1,22 @@
 /* MEDIA QUERIES */
 
+/*TAILLE D'ECRAN 200px A 480px*/
+
 @media screen and (min-width: 200px) and (max-width: 480px){
 
+/* MODIFICATION CSS DE LA PROFILE */
+.info#infojoueur{
+  width: 100%;
+  text-align: center;
+  float:left;
+}
+table.order{
+  height: 100%;
+  width: 100%;
+}
+table.order td{
+  font-size: 10px;
+}
 
 /*CSS SLIDER PAGE D'ACCUEIL*/
 #cssSlider 
@@ -36,54 +51,62 @@
 }
 
 /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+
+  
 @keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -480px;}
-  37%{margin-left: -480px;}
-  40%{margin-left: -960px;}
-  57%{margin-left: -960px;}
-  60%{margin-left: -1440px;}
-  77%{margin-left: -1440px;}
-  80%{margin-left: -1920px;}
-  97%{margin-left: -1920px;}
-  100%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -480px;}
+  48%{margin-left: -480px;}
+  50%{margin-left: -960px;}
+  73%{margin-left: -960px;}
+  75%{margin-left: -1440px;}
+  98%{margin-left: -1440px;}
+  100%{margin-left: -1920px;}
 }
 
 @-o-keyframes slide{
-  0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -480px;}
-  37%{margin-left: -480px;}
-  40%{margin-left: -960px;}
-  57%{margin-left: -960px;}
-  60%{margin-left: -1440px;}
-  77%{margin-left: -1440px;}
-  80%{margin-left: -1920px;}
-  97%{margin-left: -1920px;}
-  100%{margin-left: 0px;}
-
+0%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -480px;}
+  48%{margin-left: -480px;}
+  50%{margin-left: -960px;}
+  73%{margin-left: -960px;}
+  75%{margin-left: -1440px;}
+  98%{margin-left: -1440px;}
+  100%{margin-left: -1920px;}
 }
 
 @-webkit-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -480px;}
-  37%{margin-left: -480px;}
-  40%{margin-left: -960px;}
-  57%{margin-left: -960px;}
-  60%{margin-left: -1440px;}
-  77%{margin-left: -1440px;}
-  80%{margin-left: -1920px;}
-  97%{margin-left: -1920px;}
-  100%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -480px;}
+  48%{margin-left: -480px;}
+  50%{margin-left: -960px;}
+  73%{margin-left: -960px;}
+  75%{margin-left: -1440px;}
+  98%{margin-left: -1440px;}
+  100%{margin-left: -1920px;}
 }
-
 
 }
 
-
+/*TAILLE D'ECRAN 481px A 720px*/
 @media screen and (min-width: 481px) and (max-width: 720px){
+
+.info#infojoueur{
+  width: 100%;
+  text-align: center;
+  float:left;
+}
+table.order{
+  height: 100%;
+  width: 100%;
+}
+table.order td{
+  font-size: 15px;
+}
+
 #cssSlider 
 {
   width: 720px;
@@ -116,54 +139,62 @@
 }
 
 /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+
+
 @keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -720px;}
-  37%{margin-left: -720px;}
-  40%{margin-left: -1440px;}
-  57%{margin-left: -1440px;}
-  60%{margin-left: -2160px;}
-  77%{margin-left: -2160px;}
-  80%{margin-left: -2880px;}
- 97%{margin-left: -2880px;}
-  100%{margin-left: 0px;}
-  
+  23%{margin-left: 0px;}
+  25%{margin-left: -720px;}
+  48%{margin-left: -720px;}
+  50%{margin-left: -1440px;}
+  73%{margin-left: -1440px;}
+  75%{margin-left: -2160px;}
+  98%{margin-left: -2160px;}
+  100%{margin-left: -2880px;}
+
 }
 
 @-webkit-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -720px;}
-  37%{margin-left: -720px;}
-  40%{margin-left: -1440px;}
-  57%{margin-left: -1440px;}
-  60%{margin-left: -2160px;}
-  77%{margin-left: -2160px;}
-  80%{margin-left: -2880px;}
-  97%{margin-left: -2880px;}
-  100%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -720px;}
+  48%{margin-left: -720px;}
+  50%{margin-left: -1440px;}
+  73%{margin-left: -1440px;}
+  75%{margin-left: -2160px;}
+  98%{margin-left: -2160px;}
+  100%{margin-left: -2880px;}
+
 }
 
 @-o-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -720px;}
-  37%{margin-left: -720px;}
-  40%{margin-left: -1440px;}
-  57%{margin-left: -1440px;}
-  60%{margin-left: -2160px;}
-  77%{margin-left: -2160px;}
-  80%{margin-left: -2880px;}
-  97%{margin-left: -2880px;}
-  100%{margin-left: 0px;}
-
+  23%{margin-left: 0px;}
+  25%{margin-left: -720px;}
+  48%{margin-left: -720px;}
+  50%{margin-left: -1440px;}
+  73%{margin-left: -1440px;}
+  75%{margin-left: -2160px;}
+  98%{margin-left: -2160px;}
+  100%{margin-left: -2880px;}
 
 }
 }
 
-
+/*TAILLE D'ECRAN 721px A 1024px*/
 @media screen and (min-width: 721px) and (max-width: 1024px){
+
+.info#infojoueur{
+  width: 100%;
+  text-align: center;
+  float:left;
+}
+
+table.order{
+  height: 100%;
+  width: 100%;
+
+}
 
 #cssSlider 
 {
@@ -197,32 +228,42 @@
 }
 
 /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
+
+
 @keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -1024px;}
-  37%{margin-left: -1024px;}
-  40%{margin-left: -2048px;}
-  57%{margin-left: -2048px;}
-  60%{margin-left: -3072px;}
-  77%{margin-left: -3072px;}
-  80%{margin-left: -4096px;}
-  97%{margin-left: -4096px;}
-  100%{margin-left: 0px;}
-  
+  23%{margin-left: 0px;}
+  25%{margin-left: -1024px;}
+  48%{margin-left: -1024px;}
+  50%{margin-left: -2048px;}
+  73%{margin-left: -2048px;}
+  75%{margin-left: -3072px;}
+  98%{margin-left: -3072px;}
+  100%{margin-left: -4096px;}
 }
 
 @-webkit-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -1024px;}
-  37%{margin-left: -1024px;}
-  40%{margin-left: -2048px;}
-  57%{margin-left: -2048px;}
-  60%{margin-left: -3072px;}
-  77%{margin-left: -3072px;}
-  80%{margin-left: -4096px;}
-  97%{margin-left: -4096px;}
-  100%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -1024px;}
+  48%{margin-left: -1024px;}
+  50%{margin-left: -2048px;}
+  73%{margin-left: -2048px;}
+  75%{margin-left: -3072px;}
+  98%{margin-left: -3072px;}
+  100%{margin-left: -4096px;}
 
+}
+
+@-o-keyframes slide {
+  0%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -1024px;}
+  48%{margin-left: -1024px;}
+  50%{margin-left: -2048px;}
+  73%{margin-left: -2048px;}
+  75%{margin-left: -3072px;}
+  98%{margin-left: -3072px;}
+  100%{margin-left: -4096px;}
+}
 }

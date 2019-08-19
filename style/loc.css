@@ -114,54 +114,49 @@ div#infojoueur{
 /*ANIMATION SUR LES DIFFERENTS NAVIGATEURS*/
 @keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -2000px;}
-  37%{margin-left: -2000px;}
-  40%{margin-left: -4000px;}
-  57%{margin-left: -4000px;}
-  60%{margin-left: -6000px;}
-  77%{margin-left: -6000px;}
-  80%{margin-left: -8000px;}
-  97%{margin-left: -8000px;}
-  100%{margin-left: 0px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -2000px;}
+  48%{margin-left: -2000px;}
+  50%{margin-left: -4000px;}
+  73%{margin-left: -4000px;}
+  75%{margin-left: -6000px;}
+  98%{margin-left: -6000px;}
+  100%{margin-left: -8000px;}
 }
 
 @-moz-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -2000px;}
-  37%{margin-left: -2000px;}
-  40%{margin-left: -4000px;}
-  57%{margin-left: -4000px;}
-  60%{margin-left: -6000px;}
-  77%{margin-left: -6000px;}
-  80%{margin-left: -8000px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -2000px;}
+  48%{margin-left: -2000px;}
+  50%{margin-left: -4000px;}
+  73%{margin-left: -4000px;}
+  75%{margin-left: -6000px;}
+  98%{margin-left: -6000px;}
   100%{margin-left: -8000px;}
 }
 
 @-webkit-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -2000px;}
-  37%{margin-left: -2000px;}
-  40%{margin-left: -4000px;}
-  57%{margin-left: -4000px;}
-  60%{margin-left: -6000px;}
-  77%{margin-left: -6000px;}
-  80%{margin-left: -8000px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -2000px;}
+  48%{margin-left: -2000px;}
+  50%{margin-left: -4000px;}
+  73%{margin-left: -4000px;}
+  75%{margin-left: -6000px;}
+  98%{margin-left: -6000px;}
   100%{margin-left: -8000px;}
 }
 
 @-o-keyframes slide{
   0%{margin-left: 0px;}
-  17%{margin-left: 0px;}
-  20%{margin-left: -2000px;}
-  37%{margin-left: -2000px;}
-  40%{margin-left: -4000px;}
-  57%{margin-left: -4000px;}
-  60%{margin-left: -6000px;}
-  77%{margin-left: -6000px;}
-  80%{margin-left: -8000px;}
+  23%{margin-left: 0px;}
+  25%{margin-left: -2000px;}
+  48%{margin-left: -2000px;}
+  50%{margin-left: -4000px;}
+  73%{margin-left: -4000px;}
+  75%{margin-left: -6000px;}
+  98%{margin-left: -6000px;}
   100%{margin-left: -8000px;}
 }
 
