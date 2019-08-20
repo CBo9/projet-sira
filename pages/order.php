@@ -81,18 +81,19 @@ while($donnees = $req->fetch()){
 
 <script>
 
+document.getElementById('dateF').value=document.getElementById('dateD').value;
+
+
+
 //FONCTION DE RECUPEARTION DE LA DATE 
 function temps(date)
 {
-var d = new Date(date[2], date[1] - 1, date[0]);
+var d = new Date(date[0],date[1]-1, date[2]);
 return d.getTime();
 }
 
 //FONCTION DE CALCUL DU PRIX AVEC LA VALEUR DE LA function 'temps'
-function calculer(prixj) 
-{ 
-
-
+function calculer(prixj){ 
 var date1=document.getElementById('dateD').value;
 var date2=document.getElementById('dateF').value;
 var dateD=date1.replace(/-/gi, '/');
@@ -101,10 +102,9 @@ var dateF=date2.replace(/-/gi, '/');
 var debut = temps(dateD.split("/"));
 var fin = temps(dateF.split("/"));
 var nb = (fin - debut) / (1000 * 60 * 60 * 24); // + " jours";
-nb= (Math.floor(nb/365));
 nb++;
 document.getElementById('res').innerHTML='Vous réservez pour ' + nb + 'jours: ' + (nb*prixj)+ '€.';
-document.getElementById('res').innerHTML+= '<input type="submit" name="envoi" value="Confirmer">';
+document.getElementById('res').innerHTML+= '<input type="submit" name="modif" value="Confirmer">';
 document.getElementById('pt').value = nb*prixj;
 } 
 
@@ -113,6 +113,7 @@ function datej(){
 
 	var date1=document.getElementById('dateD').value;
 	document.getElementById('dateF').min=date1;
+
 }
 
 </script>
