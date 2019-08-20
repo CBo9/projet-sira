@@ -48,7 +48,7 @@ a
 
 a:hover
 {
-  color: blue;
+  color: #FF2828;
 }
 
 h1{
@@ -332,6 +332,7 @@ td a
 h1
 {
   margin-top:0;
+  margin-bottom: 25px;
   padding-top:40px;
   color:#FF2828;
 }
@@ -349,7 +350,7 @@ h1
 }
 @keyframes breathe{
   60%{
-    color: blue;
+    color: antiquewhite;
     
   }
 }
