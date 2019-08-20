@@ -22,11 +22,12 @@
 
 body
 {
+  background-image: url(../rubber_grip/rubber_grip.png);
+  background-repeat: repeat;
   height: 100%;
   min-height:100%;
   margin: 0 ;
   padding: 0;
-  background: #232323;
   color: #cdcdcd;
   font-family: "Avenir Next", "Avenir", sans-serif;
   overflow-x: hidden;
@@ -423,7 +424,7 @@ h1
   transform: translate(-20px);
   color:#E9B2B2;
 }
-
+/* CSS PAGE ORDER */
 .photOrder
 {
   height:500px;
@@ -433,12 +434,22 @@ h1
 {
   display: flex;
   margin:20px 20px;
+
+}
+
+.infos{
+  border:3px dotted #FF2828;
+  height:150px;
+  border-radius: 20px 0px 20px 0px;
+  margin-right:20px;
+  background-color: rgba(77,136,213,0.15); 
+  color:white;
 }
 
 .infos p
 {
-  font-size: 2.5em;
-  margin:20px 20px;
+  font-size: 1.8em;
+  margin:5px 20px;
 }
 
 
@@ -450,6 +461,27 @@ h1
 {
   font-size: 1.8em;
   margin:5px 20px;
+}
+
+#resaBtn{
+  background-color: red;
+  border-radius: 5px;
+  padding:3px;
+  cursor: pointer;
+}
+
+#tableRes tr, #tableRes td{
+  border:none;
+}
+
+#finalResBtn{
+  cursor:pointer;
+  transition:0.4s ease;
+  transform: translate(50px);
+}
+
+#finalResBtn:hover{
+  background-color: red;
 }
 
 .photoTab2
@@ -584,6 +616,7 @@ textarea
 }
 
 fieldset{
+  border:1px solid;
   border-color:#FF2828;
   background-color: rgba(77,136,213,0.15); 
 }
