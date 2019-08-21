@@ -25,7 +25,11 @@ require('utility/fonctions.php');?>
   <?php endif; ?>
   <!-- FIN DE LA CONDITION POUR L'AFFICHAGE DU SLIDER SUELEMENT SUR LA PAGE D'ACCUEIL -->
 
-<h2 class="indexaf">VEHICULES DISPONIBLES À LA LOCATION</h2>
+<h2 class="indexaf">VÉHICULES DISPONIBLES À LA LOCATION</h2>
+<div class="lienFiltre">
+<a href="utility/suppr.php?filtre=0" <?php if($_SESSION['filtre']=='DESC'){echo 'class="filtre"';}?> >Prix Croissant</a>
+<a href="utility/suppr.php?filtre=1" <?php if($_SESSION['filtre']=='ASC' OR (!isset($_SESSION['filtre']))){echo 'class="filtre"';}?> >Prix Décroissant</a>
+</div>
   <?php 
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
@@ -38,8 +42,7 @@ require('utility/fonctions.php');?>
   if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
     $db = connexion('sira');
-
-    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier ASC LIMIT 5 ');
+    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $_SESSION['filtre'] .' LIMIT 5 ');
     $req->execute();
     while($donnees = $req->fetch()){
      echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
@@ -55,7 +58,7 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 
   $db = connexion('sira');
   $skip=5*$_GET['page'];
-  $query='SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier ASC LIMIT 5 OFFSET '. $skip   ;
+  $query='SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $_SESSION['filtre'] .' LIMIT 5 OFFSET '. $skip   ;
   $req=$db->prepare($query);
   $req->execute();
   while($donnees = $req->fetch()){

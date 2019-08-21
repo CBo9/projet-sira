@@ -10,7 +10,9 @@ $idm = $_SESSION['id'];
 
 <body class="support-page">
 	<div class="wrapper">
-<?php if($_SESSION['statut']='admin'){
+<?php
+$statut=isset($_SESSION['statut'])?$_SESSION['statut']:NULL;
+ if($statut=='admin'){
 
 	echo'<h1>Gestion des requetes</h1>
 	<table id="supportadm">
@@ -19,9 +21,8 @@ $idm = $_SESSION['id'];
   		<td>Id membre</td>
   		<td>Nom</td>
   		<td>Prénom</td>
-  		<td>Pseudo</td>
   		<td>Email</td>
-  		<td>Message</td>
+  		<td>Objet</td>
     </tr>
     <thead>';
 
@@ -36,15 +37,15 @@ while($donnees =$requete->fetch()){
 			<td> ". $donnees['id_membre'] . "</td>
 			<td>" . $donnees['nom'] ."</td>
 			<td>". $donnees['prenom']."</td>
-			<td>". $donnees['pseudo']." </td>
 			<td>".$donnees['mail']." </td>
-			<td id='message'>".$donnees['message']." </td>
+			<td>".$donnees['objet']." </td>
 		</tr>";
 
 }
 echo '</table>';
-}
+}else{
   ?>
+
 
 
 
@@ -56,10 +57,10 @@ echo '</table>';
 	<form  name="formulaire" method="post" action="">
 	<fieldset>
 		<legend>Envoyer une requête au support</legend>
-					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required ><br><br>
-					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required ><br><br>
-					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required class="mail-form-support" ><br><br>
-					<label for="pseudo">Pseudo</label>:<input type="text" name="pseudo" id="pseudo" maxlength="35"  required ><br><br>
+					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required value="<?= $_SESSION['nom'];?>"><br><br>
+					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required value="<?= $_SESSION['prenom'];?>"><br><br>
+					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required class="mail-form-support" value="<?= $_SESSION['mail'];?>"><br><br>
+					<label for="objet">Objet</label>:<input type="text" name="objet" id="objet" maxlength="35"  required placeholder="35 caractères max"><br><br>
 					<label for="message">Message</label>:<br><textarea type="text" name="message" id="message" maxlength="300"  required  placeholder="Décrivez votre question ou votre problème du mieux que possible. Francais et anglais acceptés." class="font-placeholder"></textarea> <br><br>
 				    
        				<br><br>
@@ -70,24 +71,6 @@ echo '</table>';
 <!-- FIN DU FORMULAIRE -->
 
 </div>
-
-
-<!-- DEBUT DU CODE PHP -->
-<?php 
-
-if (isset($_SESSION['id'])){
-	echo "
-<script>
-    $( document ).ready(function() {
-        $(\"#nom\").val('". $_SESSION['nom'] . "');
-        $(\"#prenom\").val('".  $_SESSION['prenom']. "');
-        $(\"#mail\").val('" .  $_SESSION['mail']. " ');
-        $(\"#pseudo\").val('". $_SESSION['pseudo']. "');
-        });
-</script>";
-}
-?>
-<!-- FIN DU CODE PHP -->
 <div class="push"></div>
 </div>
 
@@ -103,7 +86,7 @@ $idm = $_SESSION['id'];
 	$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
 	$prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
 	$mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;
-	$pseudo=isset($_POST['pseudo']) ? $_POST['pseudo'] : NULL ;
+	$objet=isset($_POST['objet']) ? $_POST['objet'] : NULL ;
 	$message=isset($_POST['message']) ? $_POST['message'] : NULL ;
 
 
@@ -111,19 +94,21 @@ $idm = $_SESSION['id'];
 		if (isset($_POST['envoyer'])) {
 			
 		    	$db=connexion('sira');
-				$insertion=$db->prepare('INSERT INTO support (id_membre, nom, prenom, mail, pseudo, message )
-				VALUES (:id_membre, :nom,:prenom,:mail,:pseudo,:message) ' );
+				$insertion=$db->prepare('INSERT INTO support (id_membre, nom, prenom, mail, objet, message )
+				VALUES (:id_membre, :nom,:prenom,:mail,:objet,:message) ' );
 				$insertion->execute([
 							'id_membre'=>$idm,
 							'nom'=>$nom,
 							'prenom'=>$prenom,
 						    'mail'=>$mail,
-							'pseudo'=>$pseudo,
+							'objet'=>$objet,
 							'message'=>$message]
 								);
 			}
 			//FIN DE REQUETE D'INSERTION
-		require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');		
+		require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');	
+		}	
+		
 ?>
 
 			

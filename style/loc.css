@@ -21,6 +21,7 @@
 /*CODE CSS APPLIQUÉ AU BODY*/
 html,body{
    scrollbar-color:#696e72 #1f2122;
+   scroll-behavior: smooth;
 }
 
 body
@@ -669,4 +670,12 @@ fieldset{
 
 .support-page fieldset{
   border-color:#4D88D5;
+}
+
+.lienFiltre a{
+  color:white;
+}
+
+.lienFiltre .filtre{
+  color:grey;
 }

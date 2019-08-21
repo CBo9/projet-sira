@@ -128,6 +128,7 @@ if (isset($password) AND $password==$_SESSION['password']){
 			<td>Agence</td>
 			<td>Début de location</td>
 			<td>Fin de location</td>
+			<td>Statut</td>
 			<td>Supprimer la commande</td>
 		</tr>
 	</thead>
@@ -147,6 +148,7 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['titreA']."</td>
 			<td>". $donnees['date_depart']." </td>
 			<td>".$donnees['date_fin']." </td>
+			<td>" .$donnees['statutC']. "</td>
 			<td><a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Supprimer</a>
 		</tr>";
 }

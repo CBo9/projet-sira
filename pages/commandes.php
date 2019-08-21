@@ -60,8 +60,8 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['date_depart']." </td>
 			<td>".$donnees['date_fin']." </td>
 			<td>".$donnees['prix_total']." </td>
-			<td></td>
-			<td><a href=../pages/commandes.php?modc=" . $donnees['id_commande'] .">Modifier</a>/<a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Supprimer</a></td>
+			<td>" .$donnees['statutC']. "</td>
+			<td><a href=../pages/commandes.php?modc=" . $donnees['id_commande'] ."#formCom>Modifier</a>/<a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Supprimer</a></td>
 		</tr>";
 }
 // FIN DE L'AFFICHAGE DU TABLEAU

@@ -71,14 +71,14 @@ while($donnees = $req->fetch()){
 
 						<!-- INPUT DE LA DATE DE FIN -->
 						<td><label>Date de fin</label></td>
-						<td><input type="date"  onclick="datej() remove()" min="<?= $datenow;?>" name="dateF" id="dateF"></td>
+						<td><input type="date"  onclick="datej(), remove()" min="<?= $datenow;?>" name="dateF" id="dateF"></td>
 					</tr>
 
 					
 					<!-- LIEN POUR AFFICHER LE PRIX TOTAL -->	
 					<tr>
 						<?php if($statutVehicule=='dispo'){
-							echo '<td><a onclick="calculer(<?= $prixJ; ?>)" id="resaBtn">Réserver</a></td>';
+							echo '<td><a onclick="calculer('. $prixJ .' )" id="resaBtn">Réserver</a></td>';
 						}else{
 							echo '<td><a id="resaBtnDisabled">Non disponible</a></td>';
 						}

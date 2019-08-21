@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('fonctions.php');
 
 // RECUPERATION DE L'"id" EN GET
@@ -7,7 +8,7 @@ echo $_GET['id'];
 // REQUETE DE SUPPRESSION DES VEHICULE DANS LA BASE DE DONNEE 
 if(isset($_GET['idv']))
 {
-$id=$_GET['idv'];
+	$id=$_GET['idv'];
 
 	$db=connexion('sira');
 	$rq=$db->prepare("SELECT * FROM vehicule WHERE id_vehicule='$id'");
@@ -25,7 +26,7 @@ $id=$_GET['idv'];
 // REQUETE DE SUPPRESSION DES AGENCES DANS LA BASE DE DONNEE
 if(isset($_GET['ida']))
 {
-$id=$_GET['ida'];
+	$id=$_GET['ida'];
 
 	$db=connexion('sira');
 	$rq=$db->prepare("SELECT * FROM agences WHERE id_agence='$id'");
@@ -43,7 +44,7 @@ $id=$_GET['ida'];
 // REQUETE DE SUPPRESSION DES MEMBRES DANS LA BASE DE DONNEE
 if(isset($_GET['idm']))
 {
-$id=$_GET['idm'];
+	$id=$_GET['idm'];
 
 	$db=connexion('sira');
 	
@@ -56,11 +57,22 @@ $id=$_GET['idm'];
 // REQUETE DE SUPPRESSION DES COMMANDES DANS LA BASE DE DONNEE
 if(isset($_GET['idc']))
 {
-$id=$_GET['idc'];
+	$id=$_GET['idc'];
 
 	$db=connexion('sira');
 	
 	$req=$db->prepare("DELETE FROM commande WHERE id_commande='$id'");
 	$req->execute();
 	header('location:../pages/profile.php');
+}
+
+
+if(isset($_GET['filtre'])){
+	$filtre=$_GET['filtre'];
+	if($filtre==0){
+		$_SESSION['filtre']='ASC';
+	}else{
+		$_SESSION['filtre']='DESC';
+	}
+	header('Location:../index.php');
 }
