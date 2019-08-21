@@ -7,7 +7,9 @@ require('utility/fonctions.php');?>
   <h2 id="subTitle">Louez une voiture au meilleur prix</h2>
 
   <!-- LE SLIDER NE S'AFFICHE QUE SUR LA PAGE D'ACCUEIL -->
-  <?php if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
+  <?php
+  $filtre=isset($_SESSION['filtre'])?$_SESSION['filtre']:'ASC';
+   if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
 
     <!-- SLIDER DE LA PAGE D'ACCUEIL -->
     <div id="cssSlider">
@@ -27,15 +29,15 @@ require('utility/fonctions.php');?>
 
 <h2 class="indexaf">VÉHICULES DISPONIBLES À LA LOCATION</h2>
 <div class="lienFiltre">
-<a href="utility/suppr.php?filtre=0" <?php if($_SESSION['filtre']=='DESC'){echo 'class="filtre"';}?> >Prix Croissant</a>
-<a href="utility/suppr.php?filtre=1" <?php if($_SESSION['filtre']=='ASC' OR (!isset($_SESSION['filtre']))){echo 'class="filtre"';}?> >Prix Décroissant</a>
+<a href="utility/suppr.php?filtre=0" <?php if($filtre=='DESC'){echo 'class="filtre"';}?> >Prix Croissant</a>
+<a href="utility/suppr.php?filtre=1" <?php if($filtre=='ASC' ){echo 'class="filtre"';}?> >Prix Décroissant</a>
 </div>
   <?php 
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
   $pageP=isset($_GET['page']) ? $_GET['page'] -1 : 0;
   $nb_pages=floor(((compteurVehicule('sira','vehicule')-1)/5));
-  $filtre=isset($_SESSION['filtre'])?$_SESSION['filtre']:'ASC';
+  
 // FIN DES VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
 
 // CONDITION POUR L'AFFICHAGE DE 5 VEHICULE SUR LA PAGE

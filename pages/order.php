@@ -71,20 +71,20 @@ while($donnees = $req->fetch()){
 
 						<!-- INPUT DE LA DATE DE FIN -->
 						<td><label>Date de fin</label></td>
-						<td><input type="date"  onclick="datej(), remove()" min="<?= $datenow;?>" name="dateF" id="dateF"></td>
+						<td><input type="date"  onclick="datej(), remove()" min="<?= $datenow;?>" name="dateF" id="dateF" value="<?= $datenow;?>" ></td>
 					</tr>
 
 					
 					<!-- LIEN POUR AFFICHER LE PRIX TOTAL -->	
 					<tr>
 						<?php if($statutVehicule=='dispo'){
-							echo '<td><a onclick="calculer('. $prixJ .' )" id="resaBtn">Réserver</a></td>';
+							echo '<td><a onclick="calculer('. $prixJ .')" id="resaBtn">Réserver</a></td>';
 						}else{
 							echo '<td><a id="resaBtnDisabled">Non disponible</a></td>';
 						}
 						?>
 					</tr>
-				
+
 				</table>
 
 				<p id="res"></p>
@@ -102,9 +102,9 @@ while($donnees = $req->fetch()){
 
 
 
-function remove(){
-	document.getElementById('res').innerHTML='';
-}
+		function remove(){
+			document.getElementById('res').innerHTML='';
+		}
 //FONCTION DE RECUPEARTION DE LA DATE 
 function temps(date)
 {
@@ -124,17 +124,22 @@ function calculer(prixj){
 var nb = (fin - debut) / (1000 * 60 * 60 * 24); // + " jours";
 nb=Math.floor(nb);
 nb++;
-document.getElementById('res').innerHTML='Vous réservez pour ' + nb + 'jours: ' + (nb*prixj)+ '€.';
-document.getElementById('res').innerHTML+= '<input id="finalResBtn" type="submit" name="envoi" value="Confirmer">';
+document.getElementById('res').innerHTML='Vous réservez pour ' + nb + ' jours: ' + (nb*prixj)+ '€.';
+
+document.getElementById('res').innerHTML+= 
+<?php if(isset($_SESSION['id'])){
+	echo '\'<input id="finalResBtn" type="submit" name="envoi" value="Confirmer">\'';
+}else{
+	echo'\'<br><a href="login_register.php">Connectez-vous pour pouvoir réserver un véhicule</a>\'';
+}?>;
+
 document.getElementById('pt').value = nb*prixj;
 } 
 
 //FONCTION DE RESERVATION
 function datej(){
-
 	var date1=document.getElementById('dateD').value;
 	document.getElementById('dateF').min=date1;
-
 }
 
 </script>
