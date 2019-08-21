@@ -25,7 +25,7 @@ require('utility/fonctions.php');?>
   <?php endif; ?>
   <!-- FIN DE LA CONDITION POUR L'AFFICHAGE DU SLIDER SUELEMENT SUR LA PAGE D'ACCUEIL -->
 
-<h2 class="indexaf">VEHICULE DISPONBILE A LA LOCATION</h2>
+<h2 class="indexaf">VEHICULES DISPONIBLES À LA LOCATION</h2>
   <?php 
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;

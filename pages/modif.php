@@ -32,8 +32,8 @@ while($donnees = $req->fetch()){
 ?>
 
 <!-- FORMULAIRE DE MODIFICATION -->
-<body>
-	<h1>Modifiez un véhicule</h1>
+<body class="adPg"> 
+	<h1 class="underTitle">Modifiez un véhicule</h1>
 	<h2>Administateur : <?= $_SESSION['prenom']?></h2>
 	<form method="post" action="" enctype="multipart/form-data">
 		<fieldset>

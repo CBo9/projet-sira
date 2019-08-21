@@ -12,7 +12,8 @@ $datenow=date('Y-m-d');
 ?>
 <!-- TABLEAU HTML POUR L'AFFICHAGE DES COMMANDES -->
 <table class="order">
-	<h1>Nos commandes</h1>
+	<h1 class="underTitle">Nos commandes</h1>
+	<thead>
 		<tr>
 			<td>Numéro de commande</td>
 			<td>Numéro de client</td>
@@ -25,6 +26,7 @@ $datenow=date('Y-m-d');
 			<td>Statut</td>
 			<td>Supprimer la commande</td>
 		</tr>
+	</thead>
 <!-- FIN DU TABLEAU HTML POUR L'AFFICHAGE DES COMMANDES -->
 
 

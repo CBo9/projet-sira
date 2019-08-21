@@ -26,8 +26,8 @@ while($donnees = $req->fetch()){
 ?>
 
 <!-- DEBUT DU FORMULAIRE DE MODIFICATION DES DONNEES -->
-<body>
-	<h1>Modifiez une agence</h1>
+<body class="adPg">
+<h1 class="underTitle">Modifiez une agence</h1>
 	<h2>Administateur : <?= $_SESSION['prenom']?></h2>
 	
 

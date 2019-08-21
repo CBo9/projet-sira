@@ -8,7 +8,7 @@ require('../utility/fonctions.php'); ?>
 
 <!-- PAGE "profile" -->
 <div class="wrapper">
-<h1>Bienvenue <?= $_SESSION['prenom']?></h1>
+<h1 class="underTitle">Bienvenue <?= $_SESSION['prenom']?></h1>
 
 <!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
 <?php  
@@ -121,6 +121,7 @@ if (isset($password) AND $password==$_SESSION['password']){
 	
 	<table class="order">
 	<h1>Mes commandes</h1>
+	<thead>
 		<tr>
 			<td>Numéro de commande</td>
 			<td>véhicule</td>
@@ -129,6 +130,7 @@ if (isset($password) AND $password==$_SESSION['password']){
 			<td>Fin de location</td>
 			<td>Supprimer la commande</td>
 		</tr>
+	</thead>
 <!-- FIN DE L'AFFICHAGE DES VEHICULE -->
 
 

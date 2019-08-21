@@ -72,12 +72,13 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 ?>
 
 
-<body id="page_ajouta">
+<body class="adPg"  id="page_ajouta">
 
 
 <!--  DEBUT DE L'AFFICHAGE DU TABLEAU DES VEHICULES DE LA BDD-->	
-	<h1>Nos agences</h1>
+	<h1 class="underTitle">Nos agences</h1>
 	<table>
+		<thead>
 		<tr>
 			<td>Numéro de l'agence</td>
 			<td>Nom de l'agence</td>
@@ -88,6 +89,7 @@ if (isset($_FILES['mfichier']) AND $_FILES['mfichier']['error'] == 0)  {
 			<td>Photo</td>
 			<td>Modification/Suppression</td>
 		</tr>
+	</thead>
 <?php 
 //DEBUT DE LA REQUETE 
 $connect=connexion('sira');

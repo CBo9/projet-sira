@@ -32,22 +32,22 @@ while($donnees = $req->fetch()){
 
 ?> 
 <div class="wrapper">
-	<h1>Réserver une <?= $titre?></h1>
+	<h1 class="underTitle">Réserver une <?= $titre?></h1>
 
 	<!-- AFFICHAGE DE L'INFORMATION DE LA VOITURE + AFFICHAGE -->
 	<div class="infosCar">
 		<img src="../img/voitures/<?= $image;?>" class='photOrder'>
 		<div class="infos">
-			<p>Véhicule : <?= ' ' . $titre; ?></p>
-			<p>Description: <em><?= ' ' . $descr; ?></em></p>
-			<p>Prix journalier : <?= ' ' . $prixJ; ?>€/jour</p>
+			<p><span class="soulign">Véhicule</span>: <?= ' ' . $titre; ?></p>
+			<p><span class="soulign">Description:</span> <em><?= ' ' . $descr; ?></em></p>
+			<p><span class="soulign">Prix journalier:</span> <?= ' ' . $prixJ; ?>€/jour</p>
 		</div>
 
 		<!-- AFFICHAGE DES INFORMATIONS DES AGENCES -->
 		<div class="infosA">
 			<fieldset>
 				<img src="../img/agences/<?= $imageA;?>" class="photoTab2 photoTab">
-				<p>Agence: <?= ' ' . $nomA;?></p>
+				<p><span class="soulign">Agence:</span> <?= ' ' . $nomA;?></p>
 				<p><?=$adr ;?></p>
 				<p><?=$cp .' '.  $ville;?></p></div>
 			</fieldset>
@@ -114,6 +114,7 @@ function calculer(prixj){
 	var debut = temps(dateD.split("/"));
 	var fin = temps(dateF.split("/"));
 var nb = (fin - debut) / (1000 * 60 * 60 * 24); // + " jours";
+nb=Math.floor(nb);
 nb++;
 document.getElementById('res').innerHTML='Vous réservez pour ' + nb + 'jours: ' + (nb*prixj)+ '€.';
 document.getElementById('res').innerHTML+= '<input id="finalResBtn" type="submit" name="modif" value="Confirmer">';

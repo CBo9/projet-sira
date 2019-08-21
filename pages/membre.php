@@ -30,9 +30,10 @@ $db=connexion('sira');
   ?>
 
 <!-- TABLEAU POUR L'AFFICHAGE DES MEMBRES -->
-<body>
-	<h1>Gestion des membres</h1>
+<body class="adPg">
+	<h1 class="underTitle">Gestion des membres</h1>
 	<table>
+    <thead>
     <tr>
   		<td>Id membre</td>
   		<td>Nom</td>
@@ -43,6 +44,7 @@ $db=connexion('sira');
   		<td>Statut</td>
       <td>Modification/Suppression</td>
     </tr>
+  </thead>
 
     <?php 
 

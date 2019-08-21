@@ -29,9 +29,9 @@ while($donnees = $req->fetch()){
 ?>
 
 
-<body>
+<body class="adPg">
 	<h2>Administateur : <?= $_SESSION['prenom']?></h2>
-	<h1>Modifiez les informations de <?=$prenom;?> </h1>
+	<h1 class="underTitle">Modifiez les informations de <?=$prenom;?> </h1>
 	<form method="post" >
 		<fieldset>
           <label for="civilite">Civilité</label>: <select name="civilite" id="civilite">

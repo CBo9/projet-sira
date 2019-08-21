@@ -2,9 +2,9 @@
 // ON RECUPERE L'id EN $_GET DEPUIS LA PAGE COMMANDES
 $id = $_GET['modc'];  ?>
 	
-	
+	<body class="adPg">
 <!-- FORMULAIRE DE MODIFICATION DE LA COMMANDE -->
-	<h1>Modifiez une commande</h1>
+	<h1 class="underTitle">Modifiez une commande</h1>
 	<!-- L'ZCTION DU FORMULAIRE NOUS PERMET DE RESTER SUR LA MÊME PAGE -->
 	<form method="post" action="commandes.php">
 		<fieldset>
