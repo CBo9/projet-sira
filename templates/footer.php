@@ -1,7 +1,7 @@
 <footer>
 	<ul class="footerLegal">
-		<li><a href="">Mentions légales</a></li>
-		<li><a href="">Conditions générales de ventes</a></li>
+		<li><a href="https://www.w3.org/">Mentions légales</a></li>
+		<li><a href="https://www.cci.fr/">Conditions générales de ventes</a></li>
 	</ul>
 	<span class="footerRef">
 		<p>Site crée par Simon & Clément</p>

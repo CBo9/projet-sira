@@ -58,7 +58,7 @@ if (isset($_POST['login_request'])){
      $_SESSION['statut']=$donnees['statut'];
      $_SESSION['type']=$donnees['type'];
      $_SESSION['civilite']=$donnees['civilite'];
-
+     dateVehicule();
      if (isset($_POST['keep-connect']) ){
        setcookie('id', $donnees['id'], time() + 365*24*3600, null, null, false, true); 
        setcookie('nom', $donnees['nom'], time() + 365*24*3600, null, null, false, true); 

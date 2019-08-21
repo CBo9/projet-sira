@@ -489,6 +489,13 @@ h1
   cursor: pointer;
 }
 
+#resaBtnDisabled{
+  background-color: grey;
+  border-radius: 5px;
+  padding:3px;
+  cursor: not-allowed;
+}
+
 #tableRes tr, #tableRes td{
   border:none;
 }
@@ -522,6 +529,11 @@ footer{
 
 footer a, footer ul li{
   color:#8f0000;
+  list-style: none;
+}
+
+.footerLegal{
+  text-align: center;
 }
 
 footer a:hover  {

@@ -151,6 +151,41 @@ function compteurTable($db,$table) {
 	}
 	return $compteur;
 }
+
+
+function dateVehicule(){
+	$db=connexion('sira');
+	$dateAct=strtotime(date('Y-m-d'));
+	$req=$db->prepare('SELECT * FROM commande');
+	$req->execute();
+	while($data=$req->fetch()){
+		$dateFin=strtotime($data['date_fin']);
+		$difference=$dateFin-$dateAct;
+		$idCommande=$data['id_commande'];
+		$idVehicule=$data['id_vehicule'];
+		if ($difference<=0) {
+			$change=$db->prepare("UPDATE commande SET statutC='finie' WHERE id_commande = '$idCommande'");
+			$change->execute(['statutC'=>'finie']);
+			$changeV=$db->prepare("UPDATE vehicule SET statutV='dispo' WHERE id_vehicule = '$id'");
+			$changeV->execute(['statutV'=>'dispo']);
+		}
+		
+	}
+}
+
+
+function compteurVehicule($db,$table) {
+	$compteur=0;
+	$db = connexion($db);
+	$query = $db -> prepare("SELECT * FROM $table WHERE statutV='dispo'");
+	$query -> execute();
+	while ($donnee = $query -> fetch()) {
+		$compteur++;
+
+	}
+	return $compteur;
+}
+
 ?>
 
 

@@ -27,6 +27,7 @@ while($donnees = $req->fetch()){
 	$cp=$donnees['cp'];
 	$descrA=$donnees['descriptionA'];
 	$imageA=$donnees['photoA'];
+	$statutVehicule=$donnees['statutV'];
 }
 // FIN DE LA RECUPERATION
 
@@ -73,10 +74,17 @@ while($donnees = $req->fetch()){
 						<td><input type="date"  onclick="datej() remove()" min="<?= $datenow;?>" name="dateF" id="dateF"></td>
 					</tr>
 
-					<!-- LIEN POUR AFFICHER LE PRIX TOTAL -->
+					
+					<!-- LIEN POUR AFFICHER LE PRIX TOTAL -->	
 					<tr>
-						<td><a onclick="calculer(<?= $prixJ; ?>)" id="resaBtn">Réserver</a></td>
+						<?php if($statutVehicule=='dispo'){
+							echo '<td><a onclick="calculer(<?= $prixJ; ?>)" id="resaBtn">Réserver</a></td>';
+						}else{
+							echo '<td><a id="resaBtnDisabled">Non disponible</a></td>';
+						}
+						?>
 					</tr>
+				
 				</table>
 
 				<p id="res"></p>
@@ -117,7 +125,7 @@ var nb = (fin - debut) / (1000 * 60 * 60 * 24); // + " jours";
 nb=Math.floor(nb);
 nb++;
 document.getElementById('res').innerHTML='Vous réservez pour ' + nb + 'jours: ' + (nb*prixj)+ '€.';
-document.getElementById('res').innerHTML+= '<input id="finalResBtn" type="submit" name="modif" value="Confirmer">';
+document.getElementById('res').innerHTML+= '<input id="finalResBtn" type="submit" name="envoi" value="Confirmer">';
 document.getElementById('pt').value = nb*prixj;
 } 
 
@@ -143,7 +151,8 @@ if (isset($_POST['envoi'])) {
 		'df'=>$_POST['dateF'],
 		'pt'=>$_POST['prixT']]);
 	// FIN DE LA REQUETE D'INSERTION DANS LA TABLE COMMANDE
-
+	$upd=$db->prepare("UPDATE vehicule SET statutV='non dispo' WHERE id_vehicule = '$id'");
+	$upd->execute(['statutV'=>'non dispo']);
 }
 require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');
 ?>

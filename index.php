@@ -30,7 +30,7 @@ require('utility/fonctions.php');?>
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
   $pageP=isset($_GET['page']) ? $_GET['page'] -1 : 0;
-  $nb_pages=floor(((compteurTable('sira','vehicule')-1)/5));
+  $nb_pages=floor(((compteurVehicule('sira','vehicule')-1)/5));
 
 // FIN DES VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
 
@@ -39,7 +39,7 @@ require('utility/fonctions.php');?>
 
     $db = connexion('sira');
 
-    $req=$db->prepare('SELECT * FROM vehicule ORDER BY prix_journalier ASC LIMIT 5 ');
+    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier ASC LIMIT 5 ');
     $req->execute();
     while($donnees = $req->fetch()){
      echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
@@ -55,7 +55,7 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 
   $db = connexion('sira');
   $skip=5*$_GET['page'];
-  $query='SELECT * FROM vehicule ORDER BY prix_journalier ASC LIMIT 5 OFFSET '. $skip   ;
+  $query='SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier ASC LIMIT 5 OFFSET '. $skip   ;
   $req=$db->prepare($query);
   $req->execute();
   while($donnees = $req->fetch()){
