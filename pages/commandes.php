@@ -2,13 +2,15 @@
 $titrePage="Gestion de commandes";
 require('../templates/navbar.php');
 require('../utility/fonctions.php'); 
+
+// LA VARIABLE DATE EST DEFINE
 $datenow=date('Y-m-d');
 
 
 
 
 ?>
-
+<!-- TABLEAU HTML POUR L'AFFICHAGE DES COMMANDES -->
 <table class="order">
 	<h1>Nos commandes</h1>
 		<tr>
@@ -23,7 +25,7 @@ $datenow=date('Y-m-d');
 			<td>Statut</td>
 			<td>Supprimer la commande</td>
 		</tr>
-<!-- FIN DE L'AFFICHAGE DES VEHICULE -->
+<!-- FIN DU TABLEAU HTML POUR L'AFFICHAGE DES COMMANDES -->
 
 
 <!-- DEBUT DE L'AFFICHAGE DES COMMANDES -->
@@ -61,19 +63,19 @@ while($donnees =$requete->fetch()){
 		</tr>";
 }
 // FIN DE L'AFFICHAGE DU TABLEAU
-
-
-
-  ?>
+?>
 </table>
 
 <?php
 
+// IF POUR FAIRE APPARAITRE LE FORMULAIRE DE MODIFICATION
 if(isset($_GET['modc'])){
 $id = $_GET['modc'];
 $connect= connexion('sira');
 $req=$connect->prepare("SELECT * FROM commande AS c INNER JOIN vehicule AS v ON c.id_vehicule=v.id_vehicule  WHERE id_commande='$id'");
 $req->execute();
+
+// ON RECUPERE LES DONNEES NECESSAIRE
 while($donnees = $req->fetch()){
 	$idc=$donnees['id_commande'];
 	$idm=$donnees['id_membre'];
