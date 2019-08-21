@@ -267,3 +267,18 @@ table.order{
   100%{margin-left: -4096px;}
 }
 }
+
+@media screen  and (max-width: 1470px){
+  .infosCar
+  {
+    flex-wrap: wrap;
+  }
+}
+
+
+@media screen  and (max-width: 1470px){
+  .photOrder
+  {
+    height:2%;
+  }
+}
