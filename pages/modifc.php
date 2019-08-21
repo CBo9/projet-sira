@@ -1,9 +1,11 @@
 <?php
+// ON RECUPERE L'id EN $_GET DEPUIS LA PAGE COMMANDES
 $id = $_GET['modc'];  ?>
 	
 	
-
+<!-- FORMULAIRE DE MODIFICATION DE LA COMMANDE -->
 	<h1>Modifiez une commande</h1>
+	<!-- L'ZCTION DU FORMULAIRE NOUS PERMET DE RESTER SUR LA MÊME PAGE -->
 	<form method="post" action="commandes.php">
 		<fieldset>
 			<br><br>
@@ -21,10 +23,12 @@ $id = $_GET['modc'];  ?>
 			
 		</fieldset>
 	</form>
+<!-- FIN DU FORMULAIRE DE MODIFICATION -->
+
+<!-- DEBUT DU CODE JAVASCRIPT -->
 
 	<script type="text/javascript">
 		
-
 
 function temps(date)
 {
@@ -60,4 +64,4 @@ function datej(){
 }
 
 </script>
-
+<!-- FIN DU CODE JAVASCRIPT -->
