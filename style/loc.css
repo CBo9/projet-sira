@@ -28,7 +28,7 @@ body
   min-height:100%;
   margin: 0 ;
   padding: 0;
-  color: #cdcdcd;
+  color: #ffffff;
   font-family: "Avenir Next", "Avenir", sans-serif;
   overflow-x: hidden;
  
@@ -61,6 +61,7 @@ h2.indexaf{
   margin-bottom: 20px;
   text-align: center;
   text-decoration: underline;
+  font-family:archive;
 }
 /*CSS DE L'AFFICHAGE DE L'INFORMATION DU MEMBRE*/
 
@@ -350,10 +351,12 @@ h1
     animation-delay: var(--delay);
 }
 @keyframes breathe{
+  0%{text-decoration: underline red;}
   60%{
     color: antiquewhite;
-    
+    text-decoration: underline antiquewhite;
   }
+  100%{text-decoration: underline red;}
 }
 #slideDown{
   display:none;
