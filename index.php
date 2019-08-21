@@ -35,14 +35,14 @@ require('utility/fonctions.php');?>
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
   $pageP=isset($_GET['page']) ? $_GET['page'] -1 : 0;
   $nb_pages=floor(((compteurVehicule('sira','vehicule')-1)/5));
-
+  $filtre=isset($_SESSION['filtre'])?$_SESSION['filtre']:'ASC';
 // FIN DES VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
 
 // CONDITION POUR L'AFFICHAGE DE 5 VEHICULE SUR LA PAGE
   if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
     $db = connexion('sira');
-    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $_SESSION['filtre'] .' LIMIT 5 ');
+    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $filtre .' LIMIT 5 ');
     $req->execute();
     while($donnees = $req->fetch()){
      echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
@@ -58,7 +58,8 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 
   $db = connexion('sira');
   $skip=5*$_GET['page'];
-  $query='SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $_SESSION['filtre'] .' LIMIT 5 OFFSET '. $skip   ;
+
+  $query='SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $filtre .' LIMIT 5 OFFSET '. $skip   ;
   $req=$db->prepare($query);
   $req->execute();
   while($donnees = $req->fetch()){
