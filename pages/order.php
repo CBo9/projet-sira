@@ -9,10 +9,12 @@ $id=$_GET['id'];
 // VARIABLE DATE
 $datenow=date('Y-m-d');
 
+
 // RECUPERATION DES DONNEES DANS LE BASE DE DONNEE
 $connect= connexion('sira');
 $req=$connect->prepare("SELECT * FROM vehicule AS v INNER JOIN agences AS a ON v.id_agence=a.id_agence  WHERE id_vehicule='$id'");
 $req->execute();
+$verif=0;
 while($donnees = $req->fetch()){
 	$ida=$donnees['id_agence'];
 	$titre=$donnees['titreV'];
@@ -28,9 +30,30 @@ while($donnees = $req->fetch()){
 	$descrA=$donnees['descriptionA'];
 	$imageA=$donnees['photoA'];
 	$statutVehicule=$donnees['statutV'];
+	$verif++;
 }
+if($verif==0){
+	header('location:error.php');
+}
+
 // FIN DE LA RECUPERATION
 
+// INSERTION DE LA COMMANDE DANS LA BASE DE DONNEES 
+
+if (isset($_POST['envoi'])) {
+	$db=connexion('sira');
+	$ins=$db->prepare('INSERT INTO commande (id_membre, id_vehicule, id_agence, date_depart, date_fin, prix_total) VALUES (:idm,:idv,:ida,:dd,:df,:pt)');
+	$ins->execute(['idm' => $_SESSION['id'],
+		'idv' =>$id,
+		'ida' =>$ida,
+		'dd'=>$_POST['dateD'],
+		'df'=>$_POST['dateF'],
+		'pt'=>$_POST['prixT']]);
+	// FIN DE LA REQUETE D'INSERTION DANS LA TABLE COMMANDE
+	$upd=$db->prepare("UPDATE vehicule SET statutV='non dispo' WHERE id_vehicule = '$id'");
+	$upd->execute(['statutV'=>'non dispo']);
+	$statutVehicule='non dispo';
+}
 ?> 
 <div class="wrapper">
 	<h1 class="underTitle">Réserver une <?= $titre?></h1>
@@ -71,15 +94,13 @@ while($donnees = $req->fetch()){
 
 						<!-- INPUT DE LA DATE DE FIN -->
 						<td><label>Date de fin</label></td>
-						<td><input type="date"  onclick="datej(), remove()" min="<?= $datenow;?>" name="dateF" id="dateF" value="<?= $datenow;?>" ></td>
+						<td><input type="date"  onclick="datej()" oninput="calculer(<?=$prixJ ;?>)"   min="<?= $datenow;?>" name="dateF" id="dateF" value="<?= $datenow;?>" ></td>
 					</tr>
 
 					
 					<!-- LIEN POUR AFFICHER LE PRIX TOTAL -->	
 					<tr>
-						<?php if($statutVehicule=='dispo'){
-							echo '<td><a onclick="calculer('. $prixJ .')" id="resaBtn">Réserver</a></td>';
-						}else{
+						<?php if($statutVehicule!='dispo'){
 							echo '<td><a id="resaBtnDisabled">Non disponible</a></td>';
 						}
 						?>
@@ -102,9 +123,7 @@ while($donnees = $req->fetch()){
 
 
 
-		function remove(){
-			document.getElementById('res').innerHTML='';
-		}
+		
 //FONCTION DE RECUPEARTION DE LA DATE 
 function temps(date)
 {
@@ -144,20 +163,7 @@ function datej(){
 
 </script>
 
-<!-- INSERTION DE LA COMMANDE DANS LA BASE DE DONNEES -->
-<?php 
-if (isset($_POST['envoi'])) {
-	$db=connexion('sira');
-	$ins=$db->prepare('INSERT INTO commande (id_membre, id_vehicule, id_agence, date_depart, date_fin, prix_total) VALUES (:idm,:idv,:ida,:dd,:df,:pt)');
-	$ins->execute(['idm' => $_SESSION['id'],
-		'idv' =>$id,
-		'ida' =>$ida,
-		'dd'=>$_POST['dateD'],
-		'df'=>$_POST['dateF'],
-		'pt'=>$_POST['prixT']]);
-	// FIN DE LA REQUETE D'INSERTION DANS LA TABLE COMMANDE
-	$upd=$db->prepare("UPDATE vehicule SET statutV='non dispo' WHERE id_vehicule = '$id'");
-	$upd->execute(['statutV'=>'non dispo']);
-}
+<?php
 require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');
 ?>
+

@@ -1,7 +1,10 @@
 <?php
 $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('../templates/navbar.php');
-require('../utility/fonctions.php'); ?>
+require('../utility/fonctions.php'); 
+if(!isset($_SESSION['id'])){
+	header('Location:login_register.php');
+}?>
 <head>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 </head>
@@ -9,6 +12,60 @@ require('../utility/fonctions.php'); ?>
 <!-- PAGE "profile" -->
 <div class="wrapper">
 <h1 class="underTitle">Bienvenue <?= $_SESSION['prenom']?></h1>
+
+
+<!-- DEBUT DU CODE PHP -->
+<?php
+
+// DECALARATION DES VARIABLES
+$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
+$prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
+$mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;
+$pseudo=isset($_POST['pseudo']) ? $_POST['pseudo'] : NULL ;
+$password=isset($_POST['password']) ? md5($_POST['password']): NULL ;
+$civil=isset($_POST['civil']) ? ($_POST['civil']): $_SESSION['civilite'] ;
+$id= $_SESSION['id'];
+
+// CONNEXION A LA BASE DE DONNEE
+$connexion=connexion('sira');
+
+//VERIFICATION DU PSEUDO  
+if ((requete($pseudo,'pseudo','sira','membres'))!=NULL AND ($pseudo!= $_SESSION['pseudo'])){
+	echo ' <span class="erreur"> Ce pseudo est déjà pris</span>';
+				    }else{
+
+if (isset($password) AND $password==$_SESSION['password']){
+	if ($_POST['nv_password']!=NULL){
+	$password=isset($_POST['nv_password']) ? md5($_POST['nv_password']) : NULL;
+						}
+
+
+						// MISE A JOUR DES DONNEES DE L'UTILISATEUR
+					$req= $connexion->prepare("UPDATE membres SET nom= '$nom', prenom='$prenom',mail= '$mail',pseudo= '$pseudo',mdp= '$password',civilite='$civil'  WHERE id ='$id'");
+					$req->execute(array(
+						'nom' => $nom,
+						'prenom' => $prenom,
+						'mail' => $mail,
+						'pseudo' => $pseudo,
+						'mdp' => $password,
+						'civilite' => $civil,
+
+						));
+				  	$_SESSION['nom']=$nom;
+				  	$_SESSION['prenom']=$prenom;
+				  	$_SESSION['mail']=$mail;
+				  	$_SESSION['pseudo']=$pseudo;
+				  	$_SESSION['password']=$password;
+				  	$_SESSION['civilite']=$civil;
+					echo '<span class="success">Vos informations ont été modifiées avec succès</span>';
+					header('Location:profile.php');
+					
+					}else if (isset($password))
+					{
+					echo '<span class="erreur">mot de passe incorrect</span>';
+					}
+				}
+			?>
 
 <!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
 <?php  
@@ -58,57 +115,7 @@ if ($_SESSION['statut']== 'admin') {
        <br><br>
 <!-- FIN DU FORMULAIRE DE MODIFICATIONS -->
 
-<!-- DEBUT DU CODE PHP -->
-<?php
 
-// DECALARATION DES VARIABLES
-$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
-$prenom=isset($_POST['prenom']) ? $_POST['prenom'] : NULL ;
-$mail=isset($_POST['mail']) ? $_POST['mail'] : NULL ;
-$pseudo=isset($_POST['pseudo']) ? $_POST['pseudo'] : NULL ;
-$password=isset($_POST['password']) ? md5($_POST['password']): NULL ;
-$civil=isset($_POST['civil']) ? ($_POST['civil']): $_SESSION['civilite'] ;
-$id= $_SESSION['id'];
-
-// CONNEXION A LA BASE DE DONNEE
-$connexion=connexion('sira');
-
-//VERIFICATION DU PSEUDO  
-if ((requete($pseudo,'pseudo','sira','membres'))!=NULL AND ($pseudo!= $_SESSION['pseudo'])){
-	echo ' <span class="erreur"> Ce pseudo est déjà pris</span>';
-				    }else{
-
-if (isset($password) AND $password==$_SESSION['password']){
-	if ($_POST['nv_password']!=NULL){
-	$password=isset($_POST['nv_password']) ? md5($_POST['nv_password']) : NULL;
-						}
-
-
-						// MISE A JOUR DES DONNEES DE L'UTILISATEUR
-					$req= $connexion->prepare("UPDATE membres SET nom= '$nom', prenom='$prenom',mail= '$mail',pseudo= '$pseudo',mdp= '$password',civilite='$civil'  WHERE id ='$id'");
-					$req->execute(array(
-						'nom' => $nom,
-						'prenom' => $prenom,
-						'mail' => $mail,
-						'pseudo' => $pseudo,
-						'mdp' => $password,
-						'civilite' => $civil,
-
-						));
-				  	$_SESSION['nom']=$nom;
-				  	$_SESSION['prenom']=$prenom;
-				  	$_SESSION['mail']=$mail;
-				  	$_SESSION['pseudo']=$pseudo;
-				  	$_SESSION['password']=$password;
-				  	$_SESSION['civilite']=$civil;
-					echo '<span class="success">Vos informations ont été modifiées avec succès</span>';
-					
-					}else if (isset($password))
-					{
-					echo '<span class="erreur">mot de passe incorrect</span>';
-					}
-				}
-			?>
 
 					<input type="submit" value="Modifier " id="modifier">
 			</div>
@@ -129,7 +136,7 @@ if (isset($password) AND $password==$_SESSION['password']){
 			<td>Début de location</td>
 			<td>Fin de location</td>
 			<td>Statut</td>
-			<td>Supprimer la commande</td>
+			<td>Options</td>
 		</tr>
 	</thead>
 <!-- FIN DE L'AFFICHAGE DES VEHICULE -->
@@ -149,8 +156,11 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['date_depart']." </td>
 			<td>".$donnees['date_fin']." </td>
 			<td>" .$donnees['statutC']. "</td>
-			<td><a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Supprimer</a>
-		</tr>";
+			<td><a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Masquer</a>";
+			if($_SESSION['statut']!='admin'){
+			echo "/<a href='support.php'>Aide</a>";
+		}
+		echo "</tr>";
 }
 // FIN DE L'AFFICHAGE DU TABLEAU
 

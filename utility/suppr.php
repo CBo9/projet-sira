@@ -1,10 +1,13 @@
 <?php
 session_start();
 require('fonctions.php');
+require('../templates/navbar.php');
 
 // RECUPERATION DE L'"id" EN GET
 echo $_GET['id'];
-
+if(!isset($_SESSION['id']) OR $_SESSION['statut']!='admin'){
+	echo '<span class="erreur">Vous n\'avez pas accès à ces fonctionnalités (réservé aux administrateurs)</span> <a href="../index.php">Retourner à l\'accueil</a>';
+}else{
 // REQUETE DE SUPPRESSION DES VEHICULE DANS LA BASE DE DONNEE 
 if(isset($_GET['idv']))
 {
@@ -60,7 +63,8 @@ if(isset($_GET['idc']))
 	$id=$_GET['idc'];
 
 	$db=connexion('sira');
-	
+	$requ=$db->prepare("UPDATE vehicule  SET id_vehicule='dispo' WHERE id_vehicule='(SELECT id_vehicule FROM commande WHERE id_commande=\'$id\')'");
+	$requ->execute(['id_vehicule'=>'dispo']);
 	$req=$db->prepare("DELETE FROM commande WHERE id_commande='$id'");
 	$req->execute();
 	header('location:../pages/profile.php');
@@ -75,4 +79,5 @@ if(isset($_GET['filtre'])){
 		$_SESSION['filtre']='DESC';
 	}
 	header('Location:../index.php');
+}
 }
