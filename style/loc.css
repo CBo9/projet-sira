@@ -87,10 +87,11 @@ div#infojoueur{
   margin-top: 10px;
   margin-bottom: 10px;
   width: 300px;
-  border-radius: 50px;
+  border-radius: 50px 0 50px 0;
   display: flex;
   flex-direction: column;
   float: right;
+  font-family: Archive;
 }
 /*FIN DES INFORMATION DU MEMBRE*/
 
@@ -379,6 +380,10 @@ h1
 #toggleUpdate
 {
   cursor:pointer;
+}
+
+#toggleUpdate:hover{
+  color: #ff2828;
 }
 
 /*CSS DE L'AFFICHAGE DES VEHICULE DE LA PAGE D'ACCUEIL*/

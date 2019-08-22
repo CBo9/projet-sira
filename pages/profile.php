@@ -29,14 +29,14 @@ if ($_SESSION['statut']== 'admin') {
   		<ul class="list-joueur">
   			<?php 
   			echo "<br>";
-	  		echo "<li><u>Login:</u> ".$_SESSION["pseudo"]."</li><br>";
-	        echo "<li><u>Nom:</u> ".$_SESSION["nom"]."</li><br>";
-	        echo"<li><u>Prénom:</u> ".$_SESSION["prenom"]."</li><br>";
-	        echo"<li><u>Statut:</u> ".$_SESSION["statut"]."</li><br>";
+	  		echo "<li><u><i>Login:</i></u> ".$_SESSION["pseudo"]."</li><br>";
+	        echo "<li><u><i>Nom:</i></u> ".$_SESSION["nom"]."</li><br>";
+	        echo"<li><u><i>Prénom:</i></u> ".$_SESSION["prenom"]."</li><br>";
+	        echo"<li><u><i>Statut:</i></u> ".$_SESSION["statut"]."</li><br>";
 	        ?>
 <!-- FIN DE L'AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
 	<form action="" method="post" name="formulaire" id="formprof">
-			<legend id="toggleUpdate">Modifier mes informations</legend>
+			<legend id="toggleUpdate"><u><i>Modifier mes informations</i></u> </legend>
 			<div id="slideDown">
 					<label for="civilite">Civilité</label>: 
 					<select name="civil" id="civilite" >

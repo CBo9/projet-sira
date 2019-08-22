@@ -4,6 +4,30 @@
 
 @media screen and (min-width: 200px) and (max-width: 480px){
 
+  /*FORMULAIRE ENREGISTREMENT DE LA PAGE "login_register"*/
+
+ .mainLogreg{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 75px;
+
+}
+
+.mainLogreg form{
+  display: block;
+  float: left;
+}
+.mainLogreg{
+  display: block;
+  float: right;
+}
+
+.log_reg{
+  margin: 50px;
+}
+/*--------------------------------------------------------------*/
+
 /* MODIFICATION CSS DE LA PROFILE */
 .info#infojoueur{
   width: 100%;
@@ -11,11 +35,10 @@
   float:left;
 }
 table.order{
-  height: 100%;
-  width: 100%;
-}
-table.order td{
-  font-size: 10px;
+  height: 50%;
+  width: 50%;
+  float: left;
+
 }
 
 /*CSS SLIDER PAGE D'ACCUEIL*/
@@ -93,6 +116,28 @@ table.order td{
 
 /*TAILLE D'ECRAN 481px A 720px*/
 @media screen and (min-width: 481px) and (max-width: 720px){
+
+  /*FORMULAIRE ENREGISTREMENT DE LA PAGE "login_register"*/
+
+  .mainLogreg{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainLogreg form{
+  display: block;
+  float: left;
+}
+.mainLogreg{
+  display: block;
+  float: right;
+}
+
+.log_reg{
+  margin: 50px;
+}
+/*--------------------------------------------------------------*/
 
 .info#infojoueur{
   width: 100%;

@@ -15,6 +15,7 @@ $datenow=date('Y-m-d');
 	<h1 class="underTitle">Nos commandes</h1>
 	<thead>
 		<tr>
+			<td>Date de la commande</td>
 			<td>Numéro de commande</td>
 			<td>Numéro de client</td>
 			<td>Nom et prénom</td>
@@ -52,6 +53,7 @@ $requete=$connect->prepare("SELECT * FROM commande  AS c INNER JOIN agences AS a
 $requete->execute();
 while($donnees =$requete->fetch()){
 	echo "<tr>
+			<td> ". $donnees['date_commande'] . "</td>
 			<td> ". $donnees['id_commande'] . "</td>
 			<td> ". $donnees['id'] . "</td>
 			<td> ". $donnees['prenom'] . "  " .  $donnees['nom'] . "</td>
@@ -94,4 +96,3 @@ while($donnees = $req->fetch()){
 
 	include('modifc.php');
 	}?>
-

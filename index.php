@@ -48,7 +48,7 @@ require('utility/fonctions.php');?>
     $req->execute();
     while($donnees = $req->fetch()){
      echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
-     <img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect" alt="pas d\'image"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . '€/mois</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
+     <img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect" alt="pas d\'image"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . ' €/jour</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
    }
    if($nb_pages!=0){
     echo '<div id="pageSP"><a href="index.php?page=' . $pageS . '" id="pageS">Page suivante</a></div>';
