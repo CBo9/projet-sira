@@ -13,56 +13,6 @@ if(!isset($_SESSION['id'])){
 <div class="wrapper">
 <h1 class="underTitle">Bienvenue <?= $_SESSION['prenom']?></h1>
 
-<<<<<<< HEAD
-<!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
-<?php  
-if ($_SESSION['statut']== 'admin') {
-
-		echo '<fieldset class="administration"><a href="membre.php"> Gestion des membres</a><br>';
-		echo '<a href="ajoutv.php"> Gestion des voitures</a><br>';
-		echo '<a href="ajouta.php"> Gestion des agences</a></fieldset>';
-
-}
-?>
-<!-- FIN DE L'AFFICHAGE ADMINISTRATEUR -->
-
-
-<!-- AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
-
-<div class="info" id="infojoueur">
-  		<ul class="list-joueur">
-  			<?php 
-  			echo "<br>";
-	  		echo "<li><u><i>Login:</i></u> ".$_SESSION["pseudo"]."</li><br>";
-	        echo "<li><u><i>Nom:</i></u> ".$_SESSION["nom"]."</li><br>";
-	        echo"<li><u><i>Prénom:</i></u> ".$_SESSION["prenom"]."</li><br>";
-	        echo"<li><u><i>Statut:</i></u> ".$_SESSION["statut"]."</li><br>";
-	        ?>
-<!-- FIN DE L'AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
-	<form action="" method="post" name="formulaire" id="formprof">
-			<legend id="toggleUpdate"><u><i>Modifier mes informations</i></u> </legend>
-			<div id="slideDown">
-					<label for="civilite">Civilité</label>: 
-					<select name="civil" id="civilite" >
-					   <option hidden disabled selected  value id="empty" >---</option>
-					   <option value="Mr">Mr</option>
-					   <option value="Mme">Mme</option>
-					</select><br><br>
-					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required ><br><br>
-					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required ><br><br>
-					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required ><br><br>
-					<label for="mail">Pseudo</label>:<input type="text" name="pseudo" id="pseudo" maxlength="35"  required ><br><br>
-					<label for="mail">Mot de passe</label>:<input type="password" name="password" id="password" maxlength="35" required ><br>
-					<input type="checkbox" class="show_password_up" onclick="myFunction('password')" title="Afficher le mot de passe">
-					<br> 
-					
-					<label for="mail">Nouveau mot de passe (optionnel)</label>:<input type="password" name="nv_password" id="nv_password" maxlength="35"  ><br>
-					
-					 <input type="checkbox" class="show_password_up" onclick="myFunction('nv_password')" title="Afficher le mot de passe"><br>
-       <br><br>
-<!-- FIN DU FORMULAIRE DE MODIFICATIONS -->
-=======
->>>>>>> origin/master
 
 <!-- DEBUT DU CODE PHP -->
 <?php
