@@ -88,13 +88,13 @@ if (isset($_POST['envoi'])) {
 					<tr>
 						<!-- INPUT POUR LA DATE DE DEBUT -->
 						<td><label>Date de début de location</label></td>
-						<td><input type="date"   onclick="remove()"  min="<?= $datenow;?>"  value="<?= $datenow;?>" name="dateD" id="dateD"></td>
+						<td><input type="date"     min="<?= $datenow;?>"  value="<?= $datenow;?>" name="dateD" id="dateD"></td>
 					</tr>
 					<tr>
 
 						<!-- INPUT DE LA DATE DE FIN -->
 						<td><label>Date de fin</label></td>
-						<td><input type="date"  onclick="datej()" oninput="calculer(<?=$prixJ ;?>)"   min="<?= $datenow;?>" name="dateF" id="dateF" value="<?= $datenow;?>" ></td>
+						<td><input type="date"  onclick="datej()" oninput="calculer(<?=$prixJ ;?>)"   min="<?= $datenow;?>" name="dateF" id="dateF"  ></td>
 					</tr>
 
 					
@@ -119,7 +119,7 @@ if (isset($_POST['envoi'])) {
 
 	<script>
 
-		document.getElementById('dateF').value=document.getElementById('dateD').value;
+		
 
 
 
@@ -145,14 +145,19 @@ nb=Math.floor(nb);
 nb++;
 document.getElementById('res').innerHTML='Vous réservez pour ' + nb + ' jours: ' + (nb*prixj)+ '€.';
 
-document.getElementById('res').innerHTML+= 
-<?php if(isset($_SESSION['id'])){
-	echo '\'<input id="finalResBtn" type="submit" name="envoi" value="Confirmer">\'';
-}else{
-	echo'\'<br><a href="login_register.php">Connectez-vous pour pouvoir réserver un véhicule</a>\'';
-}?>;
 
-document.getElementById('pt').value = nb*prixj;
+<?php if($statutVehicule=='dispo'):?>
+	document.getElementById('res').innerHTML+= 
+	<?php if(isset($_SESSION['id'])){
+		echo '\'<input id="finalResBtn" type="submit" name="envoi" value="Confirmer">\'';
+	}else{
+		echo'\'<br><a href="login_register.php">Connectez-vous pour pouvoir réserver un véhicule</a>\'';
+	}?>;
+<?php endif;?>
+
+document.getElementById('pt').value = nb*prixj;	
+var date2=document.getElementById('dateF').value;
+document.getElementById('dateD').max=date2;
 } 
 
 //FONCTION DE RESERVATION
