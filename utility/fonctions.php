@@ -156,7 +156,7 @@ function compteurTable($db,$table) {
 function dateVehicule(){
 	$db=connexion('sira');
 	$dateAct=strtotime(date('Y-m-d'));
-	$req=$db->prepare('SELECT * FROM commande');
+	$req=$db->prepare("SELECT * FROM commande WHERE statutC='en cours'");
 	$req->execute();
 	while($data=$req->fetch()){
 		$dateFin=strtotime($data['date_fin']);

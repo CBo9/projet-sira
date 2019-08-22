@@ -1,7 +1,10 @@
 <?php
 $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('../templates/navbar.php');
-require('../utility/fonctions.php'); ?>
+require('../utility/fonctions.php'); 
+if(!isset($_SESSION['id'])){
+	header('Location:login_register.php');
+}?>
 <head>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 </head>
@@ -10,6 +13,7 @@ require('../utility/fonctions.php'); ?>
 <div class="wrapper">
 <h1 class="underTitle">Bienvenue <?= $_SESSION['prenom']?></h1>
 
+<<<<<<< HEAD
 <!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
 <?php  
 if ($_SESSION['statut']== 'admin') {
@@ -57,6 +61,8 @@ if ($_SESSION['statut']== 'admin') {
 					 <input type="checkbox" class="show_password_up" onclick="myFunction('nv_password')" title="Afficher le mot de passe"><br>
        <br><br>
 <!-- FIN DU FORMULAIRE DE MODIFICATIONS -->
+=======
+>>>>>>> origin/master
 
 <!-- DEBUT DU CODE PHP -->
 <?php
@@ -102,6 +108,7 @@ if (isset($password) AND $password==$_SESSION['password']){
 				  	$_SESSION['password']=$password;
 				  	$_SESSION['civilite']=$civil;
 					echo '<span class="success">Vos informations ont été modifiées avec succès</span>';
+					header('Location:profile.php');
 					
 					}else if (isset($password))
 					{
@@ -109,6 +116,56 @@ if (isset($password) AND $password==$_SESSION['password']){
 					}
 				}
 			?>
+
+<!-- AFFICHAGE SPECIFIQUE AU ADMINISTRATEUR -->
+<?php  
+if ($_SESSION['statut']== 'admin') {
+
+		echo '<fieldset class="administration"><a href="membre.php"> Gestion des membres</a><br>';
+		echo '<a href="ajoutv.php"> Gestion des voitures</a><br>';
+		echo '<a href="ajouta.php"> Gestion des agences</a></fieldset>';
+
+}
+?>
+<!-- FIN DE L'AFFICHAGE ADMINISTRATEUR -->
+
+
+<!-- AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
+
+<div class="info" id="infojoueur">
+  		<ul class="list-joueur">
+  			<?php 
+  			echo "<br>";
+	  		echo "<li><u>Login:</u> ".$_SESSION["pseudo"]."</li><br>";
+	        echo "<li><u>Nom:</u> ".$_SESSION["nom"]."</li><br>";
+	        echo"<li><u>Prénom:</u> ".$_SESSION["prenom"]."</li><br>";
+	        echo"<li><u>Statut:</u> ".$_SESSION["statut"]."</li><br>";
+	        ?>
+<!-- FIN DE L'AFFICHAGE DES INFORMATION DE L'UTILISATEUR -->
+	<form action="" method="post" name="formulaire" id="formprof">
+			<legend id="toggleUpdate">Modifier mes informations</legend>
+			<div id="slideDown">
+					<label for="civilite">Civilité</label>: 
+					<select name="civil" id="civilite" >
+					   <option hidden disabled selected  value id="empty" >---</option>
+					   <option value="Mr">Mr</option>
+					   <option value="Mme">Mme</option>
+					</select><br><br>
+					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required ><br><br>
+					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required ><br><br>
+					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required ><br><br>
+					<label for="mail">Pseudo</label>:<input type="text" name="pseudo" id="pseudo" maxlength="35"  required ><br><br>
+					<label for="mail">Mot de passe</label>:<input type="password" name="password" id="password" maxlength="35" required ><br>
+					<input type="checkbox" class="show_password_up" onclick="myFunction('password')" title="Afficher le mot de passe">
+					<br> 
+					
+					<label for="mail">Nouveau mot de passe (optionnel)</label>:<input type="password" name="nv_password" id="nv_password" maxlength="35"  ><br>
+					
+					 <input type="checkbox" class="show_password_up" onclick="myFunction('nv_password')" title="Afficher le mot de passe"><br>
+       <br><br>
+<!-- FIN DU FORMULAIRE DE MODIFICATIONS -->
+
+
 
 					<input type="submit" value="Modifier " id="modifier">
 			</div>
@@ -129,7 +186,7 @@ if (isset($password) AND $password==$_SESSION['password']){
 			<td>Début de location</td>
 			<td>Fin de location</td>
 			<td>Statut</td>
-			<td>Supprimer la commande</td>
+			<td>Options</td>
 		</tr>
 	</thead>
 <!-- FIN DE L'AFFICHAGE DES VEHICULE -->
@@ -149,8 +206,11 @@ while($donnees =$requete->fetch()){
 			<td>". $donnees['date_depart']." </td>
 			<td>".$donnees['date_fin']." </td>
 			<td>" .$donnees['statutC']. "</td>
-			<td><a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Supprimer</a>
-		</tr>";
+			<td><a href=../utility/suppr.php?idc=" . $donnees['id_commande'] .">Masquer</a>";
+			if($_SESSION['statut']!='admin'){
+			echo "/<a href='support.php'>Aide</a>";
+		}
+		echo "</tr>";
 }
 // FIN DE L'AFFICHAGE DU TABLEAU
 
