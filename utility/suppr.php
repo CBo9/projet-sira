@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require('fonctions.php');
 require('../templates/navbar.php');
 
@@ -63,11 +63,14 @@ if(isset($_GET['idc']))
 	$id=$_GET['idc'];
 
 	$db=connexion('sira');
-	$requ=$db->prepare("UPDATE vehicule  SET id_vehicule='dispo' WHERE id_vehicule='(SELECT id_vehicule FROM commande WHERE id_commande=\'$id\')'");
-	$requ->execute(['id_vehicule'=>'dispo']);
+	$recup=$db->prepare("SELECT id_vehicule FROM commande WHERE id_commande='$id'");
+	$recup->execute();
+	while($data=$recup->fetch()){$recupId=$data['id_vehicule'];}
+	$requ=$db->prepare("UPDATE vehicule  SET statutV='dispo' WHERE id_vehicule='$recupId'");
+	$requ->execute(['statutV'=>'dispo']);
 	$req=$db->prepare("DELETE FROM commande WHERE id_commande='$id'");
 	$req->execute();
-	header('location:../pages/profile.php');
+	header('location:../pages/commandes.php');
 }
 
 
