@@ -80,6 +80,11 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 <div class="push"></div>
 </div>
 <script type="text/javascript">Splitting()</script>
+<style>
+.splitting .char {
+    position: static;
+}
+</style>
 <?php 
 // FIN DE LA REQUETE D'AFFICHAGE
 require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');

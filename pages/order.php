@@ -88,13 +88,13 @@ if (isset($_POST['envoi'])) {
 					<tr>
 						<!-- INPUT POUR LA DATE DE DEBUT -->
 						<td><label>Date de début de location</label></td>
-						<td><input type="date"     min="<?= $datenow;?>"  value="<?= $datenow;?>" name="dateD" id="dateD"></td>
+						<td><input type="date"   oninput="datej(), calculer(<?=$prixJ ;?>)"  min="<?= $datenow;?>"  value="<?= $datenow;?>" name="dateD" id="dateD"></td>
 					</tr>
 					<tr>
 
 						<!-- INPUT DE LA DATE DE FIN -->
 						<td><label>Date de fin</label></td>
-						<td><input type="date"  onclick="datej()" oninput="calculer(<?=$prixJ ;?>)"   min="<?= $datenow;?>" name="dateF" id="dateF"  ></td>
+						<td><input type="date"  oninput="calculer(<?=$prixJ ;?>)"   min="<?= $datenow;?>" name="dateF" id="dateF"  ></td>
 					</tr>
 
 					
@@ -122,7 +122,7 @@ if (isset($_POST['envoi'])) {
 		
 
 
-
+autoPlace
 		
 //FONCTION DE RECUPEARTION DE LA DATE 
 function temps(date)
@@ -164,6 +164,7 @@ document.getElementById('dateD').max=date2;
 function datej(){
 	var date1=document.getElementById('dateD').value;
 	document.getElementById('dateF').min=date1;
+	document.getElementById('dateF').value=date1;
 }
 
 </script>

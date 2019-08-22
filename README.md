@@ -25,10 +25,9 @@ Notre code est organisé en 5 sous-dossiers:<br>
 ## Problèmes connus:
 - [ ] problème au niveau des cookies<br>
 - [x] ~~affichage de page suivante si index.php possède 1 seule page listant les voitures~~<br>
-- [ ] véhicule réservé pour une période à venir affiché comme disponible sur la page de réservation <br>
+- [x] ~~véhicule réservé pour une période à venir affiché comme disponible sur la page de réservation~~<br>
 
 ## Fonctionnalités en cours de développement:<br>
 - connexion disponible dans le menu hamburger (disponible sur l'intégralité des pages)<br>
 - correction des problèmes listés avant<br>
 - ajout d'avatar et de favoris possible<br>
-

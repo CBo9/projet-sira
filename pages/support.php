@@ -57,9 +57,9 @@ echo '</table>';
 	<form  name="formulaire" method="post" action="">
 	<fieldset>
 		<legend>Envoyer une requête au support</legend>
-					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required value="<?= $_SESSION['nom'];?>"><br><br>
-					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required value="<?= $_SESSION['prenom'];?>"><br><br>
-					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required class="mail-form-support" value="<?= $_SESSION['mail'];?>"><br><br>
+					<label for="nom">Nom</label>: <input type="text" name="nom" id="nom" maxlength="25"  required value=""><br><br>
+					<label for="prenom">Prénom</label>: <input type="text" name="prenom" id="prenom" maxlength="25"  required value=""><br><br>
+					<label for="mail">Mail</label>:<input type="text" name="mail" id="mail" maxlength="35"  required class="mail-form-support" value=""><br><br>
 					<label for="objet">Objet</label>:<input type="text" name="objet" id="objet" maxlength="35"  required placeholder="35 caractères max"><br><br>
 					<label for="message">Message</label>:<br><textarea type="text" name="message" id="message" maxlength="300"  required  placeholder="Décrivez votre question ou votre problème du mieux que possible. Francais et anglais acceptés." class="font-placeholder"></textarea> <br><br>
 				    
@@ -109,6 +109,19 @@ $idm = $_SESSION['id'];
 		require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');	
 		}	
 		
+
+if (isset($_SESSION['id'])){
+	echo "
+<script>
+    $( document ).ready(function() {
+        $(\"#nom\").val('". $_SESSION['nom'] . "');
+        $(\"#prenom\").val('".  $_SESSION['prenom']. "');
+        $(\"#mail\").val('" .  $_SESSION['mail']. " ');
+        $(\"#pseudo\").val('". $_SESSION['pseudo']. "');
+        });
+</script>";
+}
+
 ?>
 
 			
