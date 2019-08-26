@@ -4,7 +4,7 @@ $titrePage="Support";
 
 require('../templates/navbar.php');
 require('../utility/fonctions.php');
-$idm = $_SESSION['id'];
+$idm = isset($_SESSION['id'])? $_SESSION['id'] :NULL;
 
 ?>
 
