@@ -3,7 +3,7 @@ $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('templates/navbar.php');
 require('utility/fonctions.php');?>
 <div class="wrapperAcc">
-  <h1 id="mainTitle" data-splitting>Bienvenue sur Localoc</h1>
+  <h1 id="mainTitle" data-splitting>Bienvenue<span class="unders">_</span>sur<span class="unders">_</span>Localoc</h1>
   <h2 id="subTitle">Louez une voiture au meilleur prix</h2>
 
   <!-- LE SLIDER NE S'AFFICHE QUE SUR LA PAGE D'ACCUEIL -->
