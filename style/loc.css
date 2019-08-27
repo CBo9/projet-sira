@@ -306,7 +306,7 @@ div#infojoueur{
 /*FIN DU CSS DU MENU BURGER*/
 
 /*CSS DU TABLEAU*/
- table,  tr ,  td 
+  tr ,  td 
 {
   border: solid 2px white;
   border-collapse: collapse;
@@ -688,4 +688,12 @@ fieldset{
 .unders
 {
   font-size: 0.7em;
+}
+
+.rep a{
+  font-size:1.8em;
+}
+
+.rep{
+  border:none;
 }

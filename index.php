@@ -51,7 +51,7 @@ require('utility/fonctions.php');?>
      <img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect" alt="pas d\'image"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . ' €/jour</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
    }
    if($nb_pages!=0){
-    echo '<div id="pageSP"><a href="index.php?page=' . $pageS . '" id="pageS">Page suivante</a></div>';
+    echo '<div id="pageSP"><a href="index.php?page=' . $pageS . '" id="pageS">Page suivante ►</a></div>';
   }
 }
 
@@ -68,9 +68,9 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
    echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
    <img src="img/voitures/' . $donnees['photoV'] . '" class="photoSect" alt="pas d\'image"> <div class="infosSect"><h3>'. $donnees['titreV'] . '</h3><p>' . $donnees['prix_journalier'] . '€/mois</p><p><em>'. $donnees['descriptionV']. '</em></p></div></div></a>';
  }
- echo '<div id="pageSP"><a href="index.php?page=' . $pageP . '" id="pageP">Page précédente</a>';
+ echo '<div id="pageSP"><a href="index.php?page=' . $pageP . '" id="pageP">◄ Page précédente</a>';
  if($_GET['page']!=$nb_pages){
-   echo '<a href="index.php?page=' . $pageS . '" id="pageS">Page suivante</a>';
+   echo '<a href="index.php?page=' . $pageS . '" id="pageS">Page suivante ►</a>';
  }
  echo '</div>';
 }else{

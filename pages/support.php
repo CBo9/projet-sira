@@ -18,27 +18,44 @@ $statut=isset($_SESSION['statut'])?$_SESSION['statut']:NULL;
 	<table id="supportadm">
     <thead>
     <tr>
+		<td>Numéro de commande</td>
+    	<td>Dernier ajout</td>
   		<td>Id membre</td>
   		<td>Nom</td>
   		<td>Prénom</td>
   		<td>Email</td>
-  		<td>Objet</td>
+  		<td>Objet</td>		
     </tr>
-    <thead>';
-
-
-
+    </thead>';
 
 $connect=connexion('sira');
-$requete=$connect->prepare('SELECT * FROM support');
+$requete=$connect->prepare('SELECT * FROM support ORDER BY statutRep, dateDebut ASC ');
 $requete->execute();
 while($donnees =$requete->fetch()){
 	echo "<tr>
-			<td> ". $donnees['id_membre'] . "</td>
+			<td>" . $donnees['id_requete'] . "</td>
+			<td>";
+			$idr=$donnees['id_requete'];
+
+$lastrep=$connect->prepare("SELECT * FROM reponse WHERE id_requete = '$idr'");
+$lastrep->execute();
+$verif=0;
+while ($affRep=$lastrep->fetch()) {
+	$verif+=1;
+	$heure=$affRep['dateHeure'];
+}
+if ($verif!=0) {
+	echo $heure;
+}else{
+	echo $donnees['dateDebut'];
+}
+	        echo"</td>
+			<td>". $donnees['id_membre'] . "</td>
 			<td>" . $donnees['nom'] ."</td>
 			<td>". $donnees['prenom']."</td>
 			<td>".$donnees['mail']." </td>
 			<td>".$donnees['objet']." </td>
+			<td class='rep'><a href='requete.php?id=" .$donnees['id_requete'] . "'>→</a></td>
 		</tr>";
 
 }
@@ -79,8 +96,6 @@ echo '</table>';
 
 <!-- DEBUT DU CODE PHP -->
 <?php 
-
-$idm = $_SESSION['id'];
 // REQUETE DE L'INSERTION DU LESSAGE DANS LA BASE DE DONNEE
 	$id_membre = isset($_SESSION['id']) ? $_SESSION['id'] : $idm;
 	$nom=isset($_POST['nom']) ? $_POST['nom'] : NULL ;
@@ -121,8 +136,4 @@ if (isset($_SESSION['id'])){
         });
 </script>";
 }
-
 ?>
-
-			
-		
