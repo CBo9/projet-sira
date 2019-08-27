@@ -2,9 +2,9 @@
 $titrePage="Localoc, les meilleurs voitures aux meileurs prix";
 require('../templates/navbar.php');
 require('../utility/fonctions.php'); 
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['id']))
 	header('Location:login_register.php');
-}?>
+?>
 <head>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 </head>
@@ -168,6 +168,34 @@ while($donnees =$requete->fetch()){
 
   ?>
 </table>
+
+<table class="order">
+	<h1>Mes requêtes</h1>
+	<thead>
+		<tr>
+			<td>Numéro du membre</td>
+			<td>Numéro de la requête</td>
+			<td>Pseudo</td>
+			<td>Début de location</td>
+		</tr>
+	</thead>
+
+<?php  
+$idm = $_SESSION['id'];
+$connect=connexion('sira');
+$requete=$connect->prepare("SELECT * FROM reponse WHERE id_membre = '$idm'");
+$requete->execute();
+while($donnees =$requete->fetch()){
+	echo "<tr>
+			<td> ". $donnees['id_membre'] . "</td>
+			<td>" . $donnees['id_requete'] ."</td>
+			<td>". $donnees['pseudo']."</td>
+		</tr>";
+}
+	?>
+
+
+	</table>
 <div class="push"></div>
 </div>
 
