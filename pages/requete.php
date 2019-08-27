@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
 
 
 ?>
-
+<div id='middle'>
 <h1>Requête N°<?= $idr;?> </h1>
 
 <h2><?= $objet; ?></h2>
@@ -51,6 +51,7 @@ $insRep=$db->prepare('INSERT INTO reponse (id_requete, id_membre, pseudo, repons
 $statutRep= $_SESSION['statut']=='admin' ? 'client' :'admin';
 $statutRep=isset($_POST['resolved'])?'résolu': $statutRep;
 $upd=$db->prepare("UPDATE support SET statutRep='$statutRep' WHERE id_requete='$idr'");
+$statut=$statutRep;
 $upd->execute(['statutRep'=>$statutRep]);
 }
 
@@ -69,12 +70,12 @@ while($aff =$req->fetch()){
 
 
 if($statut!='résolu') :?>
-<form method="post" action="">
+<form method="post" action="" id='formReq'>
 	<label>Répondre</label>
 	<br>
-	<textarea name="reponse" ></textarea>
-	<input type="submit" name="envoiRep">
+	<textarea name="reponse" ></textarea><br>
 	<input type="checkbox" id="resolved" name="resolved"><label for="resolved">Marqué comme résolu</label>
+	<br><input type="submit" name="envoiRep">
 </form>
-
+</div>
 <?php endif; ?>

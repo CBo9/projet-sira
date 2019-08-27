@@ -694,6 +694,47 @@ fieldset{
   font-size:1.8em;
 }
 
+.rep:hover a{
+  color:#10c4f9;
+}
+
 .rep{
   border:none;
+  transition:0.5s ease;
+}
+
+.resolvedLine {
+  color:#10c4f9;
+}
+
+.rep:hover{
+  transform: translate(10px);
+}
+
+.repA ,.repU{
+  padding:20px;
+  border-radius: 10px;
+  margin:20px;
+  width:400px;
+}
+
+.repA{
+  background-color: #10c4f9;
+  float:right;
+  clear: both;
+}
+
+.repU{
+  background-color: green;
+  float: left;
+  clear: both;
+}
+
+#middle{
+  width:700px;
+ align-items:  center;
+}
+
+#formReq{
+  clear: both;
 }

@@ -32,7 +32,11 @@ $connect=connexion('sira');
 $requete=$connect->prepare('SELECT * FROM support ORDER BY statutRep, dateDebut ASC ');
 $requete->execute();
 while($donnees =$requete->fetch()){
-	echo "<tr>
+	echo "<tr ";
+	if($donnees['statutRep']=='résolu'){
+		echo 'class="resolvedLine"';
+	}
+	echo ">
 			<td>" . $donnees['id_requete'] . "</td>
 			<td>";
 			$idr=$donnees['id_requete'];
@@ -55,7 +59,7 @@ if ($verif!=0) {
 			<td>". $donnees['prenom']."</td>
 			<td>".$donnees['mail']." </td>
 			<td>".$donnees['objet']." </td>
-			<td class='rep'><a href='requete.php?id=" .$donnees['id_requete'] . "'>→</a></td>
+			<td class='rep'><a href='requete.php?id=" .$donnees['id_requete'] . "'><span class='arrow'>→</span></a></td>
 		</tr>";
 
 }
