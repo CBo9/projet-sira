@@ -25,6 +25,7 @@ $statut=isset($_SESSION['statut'])?$_SESSION['statut']:NULL;
   		<td>Prénom</td>
   		<td>Email</td>
   		<td>Objet</td>		
+  		<td>Statut</td>		
     </tr>
     </thead>';
 
@@ -59,6 +60,7 @@ if ($verif!=0) {
 			<td>". $donnees['prenom']."</td>
 			<td>".$donnees['mail']." </td>
 			<td>".$donnees['objet']." </td>
+			<td>".$donnees['statutRep']." </td>
 			<td class='rep'><a href='requete.php?id=" .$donnees['id_requete'] . "'><span class='arrow'>→</span></a></td>
 		</tr>";
 

@@ -114,17 +114,21 @@ while($donnees =$requete->fetch()){
 <!-- DEBUT DE L'AJOUT DE VEHICULE DANS LA BSS-->
 	<h1>Ajoutez une agence</h1>
 	<form method="post" action="" enctype="multipart/form-data">
-		<fieldset>
+		<fieldset id="ajouta">
 			<label>Nom de l'agence</label>
+			<br>
 			<input type="text" name="nom_agence">
 			<br><br>
 			<label>Adresse</label>
+			<br>
 			<input type="text" name="adresse">
 			<br><br>
 			<label>Code postal</label>
+			<br>
 			<input type="text" name="cp">
 			<br><br>
 			<label>Ville</label>
+			<br>
 			<input type="text" name="ville">
 			<br><br>
 			<label>Description</label>

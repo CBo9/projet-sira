@@ -41,6 +41,10 @@ table.order{
 
 }
 
+legend#toggleUpdate{
+  margin-right: 10px;
+}
+
 /*CSS SLIDER PAGE D'ACCUEIL*/
 #cssSlider 
 {

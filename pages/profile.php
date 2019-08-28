@@ -169,27 +169,34 @@ while($donnees =$requete->fetch()){
   ?>
 </table>
 
+<!-- AFFICHAGE DES REQUÊTE CLIENT -->
 <table class="order">
 	<h1>Mes requêtes</h1>
 	<thead>
 		<tr>
 			<td>Numéro du membre</td>
 			<td>Numéro de la requête</td>
-			<td>Pseudo</td>
-			<td>Début de location</td>
+			<td>Nom</td>
+			<td>Objet</td>
+			<td>Message</td>
+			<td>Statut</td>
 		</tr>
 	</thead>
 
 <?php  
 $idm = $_SESSION['id'];
 $connect=connexion('sira');
-$requete=$connect->prepare("SELECT * FROM reponse WHERE id_membre = '$idm'");
+$requete=$connect->prepare("SELECT * FROM support WHERE id_membre = '$idm'");
 $requete->execute();
 while($donnees =$requete->fetch()){
 	echo "<tr>
 			<td> ". $donnees['id_membre'] . "</td>
 			<td>" . $donnees['id_requete'] ."</td>
-			<td>". $donnees['pseudo']."</td>
+			<td>". $donnees['nom']."</td>
+			<td>". $donnees['objet']."</td>
+			<td>". $donnees['message']."</td>
+			<td>". $donnees['statutRep']."</td>
+			<td class='rep'><a href='requete.php?id=" .$donnees['id_requete'] . "'><span class='arrow'>→</span></a></td>
 		</tr>";
 }
 	?>
