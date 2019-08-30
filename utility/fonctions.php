@@ -67,7 +67,7 @@ function listArticle($db,$table, $v1) {
 	$query = $db -> prepare("SELECT * FROM $table");
 	$query -> execute();
 	while ($donnee = $query -> fetch()) {
-		echo '<option value="' . $donnee['id_agence'] . '">' . $donnee[$v1] . '</option>';
+		echo '<option id="'. $donnee['id_agence'] .'"value="' . $donnee['id_agence'] . '">' . $donnee[$v1] . '</option>';
 
 	}
 }
@@ -174,10 +174,10 @@ function dateVehicule(){
 }
 
 
-function compteurVehicule($db,$table) {
+function compteurVehicule($db,$table,$req) {
 	$compteur=0;
 	$db = connexion($db);
-	$query = $db -> prepare("SELECT * FROM $table WHERE statutV='dispo'");
+	$query = $db -> prepare("SELECT * FROM $table WHERE statutV='dispo'".$req);
 	$query -> execute();
 	while ($donnee = $query -> fetch()) {
 		$compteur++;

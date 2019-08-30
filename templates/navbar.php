@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/splitting.css" />
     <link rel="stylesheet" href="../style/splitting-cells.css" />
-    <script type="text/javascript" src="/projet_sira/style/splitting.js"></script>
+    <script type="text/javascript" src="/projet_sira/style/splittingmin.js"></script>
 	<title><?= $titrePage ?></title>
 
 </head>

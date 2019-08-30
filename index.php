@@ -8,6 +8,17 @@ require('utility/fonctions.php');?>
 
   <!-- LE SLIDER NE S'AFFICHE QUE SUR LA PAGE D'ACCUEIL -->
   <?php
+  $db=connexion('sira');
+  if (isset($_GET['agence'])) {$_SESSION['selectA']=$_GET['agence'];}
+  if (isset($_GET['nomA']))   {$_SESSION['nomAg']=$_GET['nomA'];}
+  $selectA=isset($_SESSION['selectA'])?$_SESSION['selectA']:'all';
+  $nomAg=isset($_SESSION['nomAg']) ?$_SESSION['nomAg']:'Toutes les agences';
+  if($selectA!='all'){
+  	$requeteA="AND id_agence=" . $_SESSION['selectA'];
+  }else{
+  	$requeteA="";
+  }
+  
   $filtre=isset($_SESSION['filtre'])?$_SESSION['filtre']:'ASC';
    if ((!isset($_GET['page'])) OR $_GET['page']==0) : ?>
 
@@ -32,11 +43,17 @@ require('utility/fonctions.php');?>
 <a href="utility/suppr.php?filtre=0" <?php if($filtre=='DESC'){echo 'class="filtre"';}?> >Prix Croissant</a>
 <a href="utility/suppr.php?filtre=1" <?php if($filtre=='ASC' ){echo 'class="filtre"';}?> >Prix Décroissant</a>
 </div>
+	<select name="agence" id="agence" oninput="selectionA()">
+						<option hidden disabled selected  value id="empty" ><?= $nomAg;?></option>
+						<option value="all"  id='all'>Toutes les agences</option>
+						<?php listArticle("sira","agences","titreA"); ?>
+	</select>
+
   <?php 
 // VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
   $pageS=isset($_GET['page']) ? $_GET['page'] +1 : 1;
   $pageP=isset($_GET['page']) ? $_GET['page'] -1 : 0;
-  $nb_pages=floor(((compteurVehicule('sira','vehicule')-1)/5));
+  $nb_pages=floor(((compteurVehicule('sira','vehicule',$requeteA)-1)/5));
   
 // FIN DES VARIABLE PHP POUR PAGE PRECEDENTE ET PAGE SUIVANTE
 
@@ -44,7 +61,7 @@ require('utility/fonctions.php');?>
   if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
     $db = connexion('sira');
-    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $filtre .' LIMIT 5 ');
+    $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" '.$requeteA.' ORDER BY prix_journalier '. $filtre .' LIMIT 5 ');
     $req->execute();
     while($donnees = $req->fetch()){
      echo '<a href="pages/order.php?id=' . $donnees['id_vehicule'] . '"><div class="carSection"> 
@@ -61,7 +78,7 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
   $db = connexion('sira');
   $skip=5*$_GET['page'];
 
-  $query='SELECT * FROM vehicule WHERE statutV="dispo" ORDER BY prix_journalier '. $filtre .' LIMIT 5 OFFSET '. $skip   ;
+  $query='SELECT * FROM vehicule WHERE statutV="dispo" '.$requeteA.' ORDER BY prix_journalier '. $filtre .' LIMIT 5 OFFSET '. $skip   ;
   $req=$db->prepare($query);
   $req->execute();
   while($donnees = $req->fetch()){
@@ -85,6 +102,13 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
     position: static;
 }
 </style>
+<script type="text/javascript">
+	function selectionA(){
+		var agence= document.getElementById('agence').value;
+		var nomAgence=document.getElementById(agence).innerHTML;
+		document.location.replace('/projet_sira/index.php?agence='+agence+ '&nomA='+nomAgence);
+	}
+</script>
 <?php 
 // FIN DE LA REQUETE D'AFFICHAGE
 require($_SERVER['DOCUMENT_ROOT'] . '/projet_sira/templates/footer.php');

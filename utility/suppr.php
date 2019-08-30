@@ -3,6 +3,15 @@
 require('fonctions.php');
 require('../templates/navbar.php');
 
+if(isset($_GET['filtre'])){
+	$filtre=$_GET['filtre'];
+	if($filtre==0){
+		$_SESSION['filtre']='ASC';
+	}else{
+		$_SESSION['filtre']='DESC';
+	}
+	header('Location:../index.php');
+}
 // RECUPERATION DE L'"id" EN GET
 if(!isset($_SESSION['id']) OR $_SESSION['statut']!='admin'){
 	echo '<span class="erreur">Vous n\'avez pas accès à ces fonctionnalités (réservé aux administrateurs)</span> <a href="../index.php">Retourner à l\'accueil</a>';
@@ -73,13 +82,5 @@ if(isset($_GET['idc']))
 }
 
 
-if(isset($_GET['filtre'])){
-	$filtre=$_GET['filtre'];
-	if($filtre==0){
-		$_SESSION['filtre']='ASC';
-	}else{
-		$_SESSION['filtre']='DESC';
-	}
-	header('Location:../index.php');
-}
+
 }
