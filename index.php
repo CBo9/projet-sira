@@ -9,11 +9,12 @@ require('utility/fonctions.php');?>
   <!-- LE SLIDER NE S'AFFICHE QUE SUR LA PAGE D'ACCUEIL -->
   <?php
   $db=connexion('sira');
+  //Si une agence est sélectionnée on récupère les infos grâce à l'URL
   if (isset($_GET['agence'])) {$_SESSION['selectA']=$_GET['agence'];}
   if (isset($_GET['nomA']))   {$_SESSION['nomAg']=$_GET['nomA'];}
-  $selectA=isset($_SESSION['selectA'])?$_SESSION['selectA']:'all';
-  $nomAg=isset($_SESSION['nomAg']) ?$_SESSION['nomAg']:'Toutes les agences';
-  if($selectA!='all'){
+  $selectA=isset($_SESSION['selectA'])?$_SESSION['selectA']:'all';             //'all' par défaut
+  $nomAg=isset($_SESSION['nomAg']) ?$_SESSION['nomAg']:'Toutes les agences';  //'Toutes les agences' par défaut
+  if($selectA!='all'){      //Si une agence spécifique est sélectionnée RequeteA devient un bout de requête SQL
   	$requeteA="AND id_agence=" . $_SESSION['selectA'];
   }else{
   	$requeteA="";
@@ -43,7 +44,7 @@ require('utility/fonctions.php');?>
 <a href="utility/suppr.php?filtre=0" <?php if($filtre=='DESC'){echo 'class="filtre"';}?> >Prix Croissant</a>
 <a href="utility/suppr.php?filtre=1" <?php if($filtre=='ASC' ){echo 'class="filtre"';}?> >Prix Décroissant</a>
 </div>
-	<select name="agence" id="agence" oninput="selectionA()">
+	<select name="agence" id="agence" oninput="selectionA()"> <!--Sélection d'une agence-->
 						<option hidden disabled selected  value id="empty" ><?= $nomAg;?></option>
 						<option value="all"  id='all'>Toutes les agences</option>
 						<?php listArticle("sira","agences","titreA"); ?>
@@ -61,6 +62,7 @@ require('utility/fonctions.php');?>
   if ((!isset($_GET['page'])) OR $_GET['page']==0) {
 
     $db = connexion('sira');
+    //Ici, la requête est variable requeteA va spécifier une agence et filtre l'ordre des prix
     $req=$db->prepare('SELECT * FROM vehicule WHERE statutV="dispo" '.$requeteA.' ORDER BY prix_journalier '. $filtre .' LIMIT 5 ');
     $req->execute();
     while($donnees = $req->fetch()){
@@ -77,7 +79,7 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 
   $db = connexion('sira');
   $skip=5*$_GET['page'];
-
+//Ici, la requête est variable requeteA va spécifier une agence et filtre l'ordre des prix. skip représentant le nombre de résultats à ignorer
   $query='SELECT * FROM vehicule WHERE statutV="dispo" '.$requeteA.' ORDER BY prix_journalier '. $filtre .' LIMIT 5 OFFSET '. $skip   ;
   $req=$db->prepare($query);
   $req->execute();
@@ -104,7 +106,8 @@ else if($_GET['page']<=$nb_pages AND $_GET['page']>0){
 </style>
 <script type="text/javascript">
 	function selectionA(){
-		var agence= document.getElementById('agence').value;
+    // On récupère le nom et le numéro de l'agence et on rafraichit la page en spécifiant ces informations dans l'URL (GET)
+		var agence= document.getElementById('agence').value; 
 		var nomAgence=document.getElementById(agence).innerHTML;
 		document.location.replace('/projet_sira/index.php?agence='+agence+ '&nomA='+nomAgence);
 	}
